@@ -87,6 +87,7 @@ path+=(
   "$HOME/.lmstudio/bin"
   "$HOME/.codeium/windsurf/bin"
   "$HOME/.npm-global/bin"
+  "$HOME/.local/bin"
 )
 
 # Bun
@@ -102,7 +103,7 @@ alias dotfiles="cd ~/dotfiles"
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # Zsh autosuggestions
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # iTerm2 shell integration (if exists)
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
