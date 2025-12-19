@@ -1,0 +1,40 @@
+# Brewfile.jiggybook
+instance_eval(File.read("Brewfile"))
+
+# JiggyBook-only packages below
+
+# Malware identification and classification tool
+brew "yara"
+# MinIO Client for object storage and filesystems
+brew "minio/stable/mc"
+
+# AI chatbot for many LLMs
+cask "chatwise"
+# WordPress local development tool by Flywheel
+cask "local"
+# Software for Logitech devices
+cask "logi-options+"
+# Provides updates to various Microsoft products
+cask "microsoft-auto-update"
+# Meet, chat, call, and collaborate in just one place
+cask "microsoft-teams"
+# Native code editor
+cask "nova"
+# Home media player
+cask "plex"
+# Client for Proton Drive
+cask "proton-drive"
+# File sync and share software
+cask "resilio-sync"
+# Team communication and collaboration software
+cask "slack"
+# Messaging app with a focus on speed and security
+cask "telegram"
+# Inserts pre-made snippets of text anywhere
+cask "textexpander"
+# Multiplayer code editor
+cask "zed"
+# Gecko based web browser
+cask "zen"
+# Video communication and virtual meeting platform
+cask "zoom"
