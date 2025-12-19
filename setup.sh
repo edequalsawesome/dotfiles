@@ -2,7 +2,32 @@
 
 # Set the dotfiles directory
 DOTFILES_DIR="$HOME/dotfiles"
-BREWFILE_PATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs/eT3_Dotfiles/Brewfile"
+
+# Determine which Brewfile to use
+select_brewfile() {
+    local machine="$1"
+
+    if [ -n "$machine" ] && [ -f "$DOTFILES_DIR/Brewfile.$machine" ]; then
+        echo "$DOTFILES_DIR/Brewfile.$machine"
+    elif [ -n "$machine" ] && [ "$machine" = "base" ]; then
+        echo "$DOTFILES_DIR/Brewfile"
+    elif [ -n "$machine" ]; then
+        echo "Unknown machine profile: $machine" >&2
+        exit 1
+    else
+        # No argument provided - prompt user
+        echo ""
+        echo "Available machine profiles:"
+        echo "  base      - Base packages only"
+        for f in "$DOTFILES_DIR"/Brewfile.*; do
+            [ -f "$f" ] && echo "  $(basename "$f" | sed 's/Brewfile\.//')      - $(basename "$f")"
+        done
+        echo ""
+        read -p "Enter machine profile (or 'base' for base only): " machine
+        select_brewfile "$machine"
+        return
+    fi
+}
 
 echo "Downloading dotfiles from GitHub"
 
@@ -61,9 +86,10 @@ else
     echo "zsh-autosuggestions already installed."
 fi
 
-# Install Homebrew packages from iCloud
+# Install Homebrew packages from local Brewfile
+BREWFILE_PATH=$(select_brewfile "$1")
 if [ -f "$BREWFILE_PATH" ]; then
-    echo "Installing Homebrew packages..."
+    echo "Installing Homebrew packages from $BREWFILE_PATH..."
     brew bundle install --file="$BREWFILE_PATH"
 else
     echo "Brewfile not found at $BREWFILE_PATH - skipping package installation"
