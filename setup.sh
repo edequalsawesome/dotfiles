@@ -103,4 +103,16 @@ else
     echo "Brewfile not found at $BREWFILE_PATH - skipping package installation"
 fi
 
+# Install Claude Code via npm
+if command -v npm &> /dev/null; then
+    if npm list -g @anthropic-ai/claude-code &> /dev/null; then
+        echo "Claude Code already installed."
+    else
+        echo "Installing Claude Code..."
+        npm install -g @anthropic-ai/claude-code
+    fi
+else
+    echo "npm not found - skipping Claude Code installation"
+fi
+
 echo "Dotfiles setup complete!"

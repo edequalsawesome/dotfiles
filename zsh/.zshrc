@@ -94,7 +94,6 @@ path+=(
 export BUN_INSTALL="$HOME/.bun"
 
 # === ALIASES ===
-alias claude="$HOME/.claude/local/claude"
 alias brewdump="cd \"$HOME/Library/Mobile Documents/com~apple~CloudDocs/eT3_Dotfiles\""
 alias dotfiles="cd ~/dotfiles"
 
