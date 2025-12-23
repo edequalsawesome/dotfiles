@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# Check for Xcode Command Line Tools
+if ! xcode-select -p &> /dev/null; then
+    echo "Xcode Command Line Tools not found. Installing..."
+    xcode-select --install
+    echo ""
+    echo "Please complete the Xcode Command Line Tools installation, then re-run this script."
+    exit 1
+else
+    echo "Xcode Command Line Tools installed."
+fi
+
 # Set the dotfiles directory
 DOTFILES_DIR="$HOME/dotfiles"
 

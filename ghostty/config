@@ -6,7 +6,7 @@
 # foreground = ffffff
 
 # THEMES
-theme = shades-of-purple
+theme = Shades Of Purple
 
 # FONTS
 font-family = "Hack Nerd Font Mono"
@@ -14,3 +14,4 @@ font-size = 16
 
 # PADDING
 window-padding-x = 10
+keybind = shift+enter=text:\n
