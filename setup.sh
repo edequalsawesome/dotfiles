@@ -13,19 +13,41 @@ select_brewfile() {
         echo "$DOTFILES_DIR/Brewfile"
     elif [ -n "$machine" ]; then
         echo "Unknown machine profile: $machine" >&2
+        echo "" >&2
+        echo "Available machine profiles:" >&2
+        echo "  base      - Base packages only" >&2
+        for f in "$DOTFILES_DIR"/Brewfile.*; do
+            [ -f "$f" ] && echo "  $(basename "$f" | sed 's/Brewfile\.//')      - $(basename "$f")" >&2
+        done
         exit 1
     else
-        # No argument provided - prompt user
-        echo ""
-        echo "Available machine profiles:"
-        echo "  base      - Base packages only"
-        for f in "$DOTFILES_DIR"/Brewfile.*; do
-            [ -f "$f" ] && echo "  $(basename "$f" | sed 's/Brewfile\.//')      - $(basename "$f")"
-        done
-        echo ""
-        read -p "Enter machine profile (or 'base' for base only): " machine
-        select_brewfile "$machine"
-        return
+        # No argument provided - check if running interactively
+        if [ -t 0 ]; then
+            # Interactive mode - prompt user
+            echo ""
+            echo "Available machine profiles:"
+            echo "  base      - Base packages only"
+            for f in "$DOTFILES_DIR"/Brewfile.*; do
+                [ -f "$f" ] && echo "  $(basename "$f" | sed 's/Brewfile\.//')      - $(basename "$f")"
+            done
+            echo ""
+            read -p "Enter machine profile (or 'base' for base only): " machine
+            select_brewfile "$machine"
+            return
+        else
+            # Non-interactive (piped) - require argument
+            echo "Error: No machine profile specified." >&2
+            echo "" >&2
+            echo "When running via curl | bash, you must specify a profile:" >&2
+            echo "  curl -L <url>/setup.sh | bash -s -- <profile>" >&2
+            echo "" >&2
+            echo "Available profiles:" >&2
+            echo "  base      - Base packages only" >&2
+            for f in "$DOTFILES_DIR"/Brewfile.*; do
+                [ -f "$f" ] && echo "  $(basename "$f" | sed 's/Brewfile\.//')      - $(basename "$f")" >&2
+            done
+            exit 1
+        fi
     fi
 }
 
@@ -87,7 +109,7 @@ else
 fi
 
 # Install Homebrew packages from local Brewfile
-BREWFILE_PATH=$(select_brewfile "$1")
+BREWFILE_PATH=$(select_brewfile "$1") || exit 1
 if [ -f "$BREWFILE_PATH" ]; then
     echo "Installing Homebrew packages from $BREWFILE_PATH..."
     brew bundle install --file="$BREWFILE_PATH"
