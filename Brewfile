@@ -178,7 +178,6 @@ mas "Tampermonkey Classic", id: 1482490089
 mas "TestFlight", id: 899247664
 mas "uBlock Origin Lite", id: 6745342698
 mas "Vinegar", id: 1591303229
-mas "Xcode", id: 497799835
 mas "xSearch", id: 1579902068
 vscode "ahmadawais.shades-of-purple"
 vscode "anthropic.claude-code"

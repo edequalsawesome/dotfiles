@@ -24,8 +24,6 @@ cask "nova"
 cask "plex"
 # Client for Proton Drive
 cask "proton-drive"
-# File sync and share software
-cask "resilio-sync"
 # Team communication and collaboration software
 cask "slack"
 # Messaging app with a focus on speed and security
@@ -38,3 +36,5 @@ cask "zed"
 cask "zen"
 # Video communication and virtual meeting platform
 cask "zoom"
+# Xcode
+mas "Xcode", id: 497799835
