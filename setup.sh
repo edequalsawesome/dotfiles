@@ -23,17 +23,8 @@ select_brewfile() {
     else
         # No argument provided - check if running interactively
         if [ -t 0 ]; then
-            # Interactive mode - prompt user
-            echo ""
-            echo "Available machine profiles:"
-            echo "  base      - Base packages only"
-            for f in "$DOTFILES_DIR"/Brewfile.*; do
-                [ -f "$f" ] && echo "  $(basename "$f" | sed 's/Brewfile\.//')      - $(basename "$f")"
-            done
-            echo ""
-            read -p "Enter machine profile (or 'base' for base only): " machine
-            select_brewfile "$machine"
-            return
+            # Interactive mode - default to base
+            echo "$DOTFILES_DIR/Brewfile"
         else
             # Non-interactive (piped) - require argument
             echo "Error: No machine profile specified." >&2
