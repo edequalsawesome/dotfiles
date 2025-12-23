@@ -21,24 +21,8 @@ select_brewfile() {
         done
         exit 1
     else
-        # No argument provided - check if running interactively
-        if [ -t 0 ]; then
-            # Interactive mode - default to base
-            echo "$DOTFILES_DIR/Brewfile"
-        else
-            # Non-interactive (piped) - require argument
-            echo "Error: No machine profile specified." >&2
-            echo "" >&2
-            echo "When running via curl | bash, you must specify a profile:" >&2
-            echo "  curl -L <url>/setup.sh | bash -s -- <profile>" >&2
-            echo "" >&2
-            echo "Available profiles:" >&2
-            echo "  base      - Base packages only" >&2
-            for f in "$DOTFILES_DIR"/Brewfile.*; do
-                [ -f "$f" ] && echo "  $(basename "$f" | sed 's/Brewfile\.//')      - $(basename "$f")" >&2
-            done
-            exit 1
-        fi
+        # No argument provided - default to base
+        echo "$DOTFILES_DIR/Brewfile"
     fi
 }
 
