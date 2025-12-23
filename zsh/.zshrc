@@ -95,7 +95,7 @@ export BUN_INSTALL="$HOME/.bun"
 
 # === ALIASES ===
 alias claude="$HOME/.claude/local/claude"
-alias brewdump="cd ~/Library/Mobile Documents/com~apple~CloudDocs/eT3_Dotfiles"
+alias brewdump="cd \"$HOME/Library/Mobile Documents/com~apple~CloudDocs/eT3_Dotfiles\""
 alias dotfiles="cd ~/dotfiles"
 
 # === ADDITIONAL TOOLS ===
@@ -110,3 +110,8 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # Kiro code nonsense
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/edequalsawesome/.lmstudio/bin"
+# End of LM Studio CLI section
+
