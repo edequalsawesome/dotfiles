@@ -1,4 +1,3 @@
-tap "basicmachines-co/basic-memory"
 tap "charmbracelet/tap"
 tap "minio/stable"
 tap "sst/tap"
