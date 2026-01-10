@@ -114,3 +114,5 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export PATH="$PATH:/Users/edequalsawesome/.lmstudio/bin"
 # End of LM Studio CLI section
 
+# Use Secretive for SSH
+export SSH_AUTH_SOCK=/Users/edequalsawesome/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
