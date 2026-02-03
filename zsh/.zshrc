@@ -96,6 +96,8 @@ export BUN_INSTALL="$HOME/.bun"
 # === ALIASES ===
 alias brewdump="cd \"$HOME/Library/Mobile Documents/com~apple~CloudDocs/eT3_Dotfiles\""
 alias dotfiles="cd ~/dotfiles"
+alias dev="cd ~/Development"
+alias jiggybrain="cd ~/Obsidian/JiggyBrain"
 
 # === ADDITIONAL TOOLS ===
 # Bun completions
@@ -114,5 +116,9 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export PATH="$PATH:/Users/edequalsawesome/.lmstudio/bin"
 # End of LM Studio CLI section
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2f9bcda (Adding more aliases I often use to .zshrc)
 # Use Secretive for SSH
 export SSH_AUTH_SOCK=/Users/edequalsawesome/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
