@@ -68,6 +68,15 @@ fi
 ln -sf "$DOTFILES_DIR/zsh/.zshrc" ~/.zshrc
 mkdir -p ~/.config/ghostty
 ln -sf "$DOTFILES_DIR/ghostty/config" ~/.config/ghostty/config
+ln -sf "$DOTFILES_DIR/tmux/.tmux.conf" ~/.tmux.conf
+mkdir -p ~/.claude
+ln -sf "$DOTFILES_DIR/claude/CLAUDE.md" ~/.claude/CLAUDE.md
+
+# Set up ~/bin and scripts
+mkdir -p ~/bin
+for script in "$DOTFILES_DIR/bin/"*; do
+    [ -f "$script" ] && ln -sf "$script" ~/bin/$(basename "$script")
+done
 
 # Install Oh-My-Zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
