@@ -69,6 +69,8 @@ ln -sf "$DOTFILES_DIR/zsh/.zshrc" ~/.zshrc
 mkdir -p ~/.config/ghostty
 ln -sf "$DOTFILES_DIR/ghostty/config" ~/.config/ghostty/config
 ln -sf "$DOTFILES_DIR/tmux/.tmux.conf" ~/.tmux.conf
+mkdir -p ~/.config/fastfetch
+ln -sf "$DOTFILES_DIR/fastfetch/config.jsonc" ~/.config/fastfetch/config.jsonc
 mkdir -p ~/.claude
 ln -sf "$DOTFILES_DIR/claude/CLAUDE.md" ~/.claude/CLAUDE.md
 
