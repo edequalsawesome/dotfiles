@@ -1,3 +1,6 @@
+# Show system info with Rocket on shell open
+fastfetch
+
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
