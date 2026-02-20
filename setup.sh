@@ -112,6 +112,15 @@ else
     echo "Brewfile not found at $BREWFILE_PATH - skipping package installation"
 fi
 
+# Install TPM (Tmux Plugin Manager)
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+    echo "Installing Tmux Plugin Manager..."
+    git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+    echo "TPM installed. Start tmux and press prefix + I to install plugins."
+else
+    echo "TPM already installed."
+fi
+
 # Install Claude Code via npm
 if command -v npm &> /dev/null; then
     if npm list -g @anthropic-ai/claude-code &> /dev/null; then
