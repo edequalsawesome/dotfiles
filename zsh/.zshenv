@@ -5,3 +5,6 @@ if [[ -x /opt/homebrew/bin/brew ]]; then
 elif [[ -x /usr/local/bin/brew ]]; then
     eval "$(/usr/local/bin/brew shellenv)"
 fi
+
+# Source local secrets (not in dotfiles repo)
+[[ -f ~/.secrets ]] && source ~/.secrets

@@ -72,3 +72,19 @@ Read `/Users/edequalsawesome/Obsidian/JiggyBrain/Robots/Claude Memory.md` at ses
 - When writing documentation, NEVER use emojis in the text
 - When building WordPress themes or plugins, use as many native controls and settings as possible instead of rewriting or recreating functionality
 - At the end of every day, create a comprehensive markdown file that explains what has been done per project each day, and add these files to the .gitignore to keep them local
+
+---
+
+# Notifications
+
+When you complete a task or need my input, send a push notification via Moshi:
+
+```bash
+curl -s -X POST https://api.getmoshi.app/api/webhook \
+  -H "Content-Type: application/json" \
+  -d "{\"token\": \"$MOSHI_TOKEN\", \"title\": \"Done\", \"message\": \"Brief summary of what was completed\"}"
+```
+
+- Token is in `$MOSHI_TOKEN` env var (loaded from `~/.secrets`)
+- Keep the message short — it's a phone notification
+- Use title "Done" for completions, "Need Input" when waiting on me
