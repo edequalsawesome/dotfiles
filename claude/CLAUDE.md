@@ -1,28 +1,62 @@
-# Always Read First
+# MANDATORY: Session Documentation
 
-At the start of every session, read `/Users/edequalsawesome/Obsidian/JiggyBrain/Robots/Claude Memory.md` for context on how to work with eD, communication preferences, active projects, and documentation patterns. Do this before diving into any task.
+**CREATE A SESSION DOC EARLY.** Don't wait until the end - sessions end abruptly. After the first meaningful exchange, create the doc. Update as you go.
 
-**Why this matters:** eD is AuDHD and has specific workflow needs. Reading this file first prevents having to re-explain context, reduces cognitive load, and ensures you communicate in a way that actually helps.
+**Path (infer from context, don't ask):**
+- **Work** (Automattic, team management, HR): `/Users/edequalsawesome/Obsidian/JiggyBrain/@a8c/!Logs/YYYY/MM/YYYY-MM-DD - [Topic].md`
+- **Everything else** (personal, tech, learning): `/Users/edequalsawesome/Obsidian/JiggyBrain/Daily/YYYY/MM/YYYY-MM-DD - [Topic].md`
+
+**Personal/Tech frontmatter:**
+```yaml
+---
+type: rollups
+date: YYYY-MM-DD
+projects:
+tags:
+  - eT3
+tldr: Two sentence max recap of what we did
+---
+```
+
+**Work frontmatter:**
+```yaml
+---
+type: rollups
+date: YYYY-MM-DD
+tldr: Two sentence max recap of what we did
+projects:
+tags:
+  - a8c
+published: false
+publishedURL:
+teamMember:
+---
+```
+
+**Content structure:**
+```markdown
+## What we worked on
+[brief description]
+
+## Key outcomes
+[what works now/what was learned]
+
+## Next steps
+[if any]
+
+## Rabbit holes
+[tangents worth remembering]
+```
 
 ---
 
-# Session Documentation (Do This Automatically)
+# Read for Context
 
-**When to create:** Once the session has a clear direction (after first meaningful exchange), create the session doc. Don't wait until the end - sessions may end abruptly.
-
-**Update as you go:** Add to the doc when hitting milestones, solving problems, or shifting topics. Partial documentation beats no documentation.
-
-**Which path to use (infer from context, don't ask):**
-- **Work sessions** (Automattic, team management, HR, work processes): `/Users/edequalsawesome/Obsidian/JiggyBrain/@a8c/!Logs/YYYY/MM/YYYY-MM-DD - [Topic Description].md`
-- **Everything else** (personal, learning, music theory, tech/home lab, health): `/Users/edequalsawesome/Obsidian/JiggyBrain/Daily/YYYY/MM/YYYY-MM-DD - [Topic Description].md`
-
-**Doc structure:**
-```
-What we worked on: [brief description]
-Key outcomes: [what works now/what was learned]
-Next steps: [if any]
-Rabbit holes: [tangents worth remembering]
-```
+Read `/Users/edequalsawesome/Obsidian/JiggyBrain/Robots/Claude Memory.md` at session start for:
+- Communication preferences (direct, casual, no corporate fluff)
+- Active projects and current work context
+- Technical preferences and tool quirks
+- AuDHD context (hyperfocus is real, "remember later" doesn't work)
 
 ---
 
