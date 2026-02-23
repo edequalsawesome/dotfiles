@@ -107,7 +107,7 @@ cask "raycast"
 # Open source virtual/remote desktop application
 cask "rustdesk"
 # Secure enclave SSH agent
-cast "secretive"
+cask "secretive"
 # Collection of apps available by subscription
 cask "setapp"
 # Sound and audio controller
