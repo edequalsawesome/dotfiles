@@ -87,6 +87,29 @@ else
     echo "Claude Code skills linked."
 fi
 
+# Set up Claude Code hooks
+if [ -d ~/.claude/hooks ] && [ ! -L ~/.claude/hooks ]; then
+    echo "WARNING: ~/.claude/hooks exists and is not a symlink."
+    echo "To avoid losing hooks, manually merge them into $DOTFILES_DIR/claude/hooks/"
+    echo "Then remove ~/.claude/hooks and re-run this script."
+else
+    rm -f ~/.claude/hooks 2>/dev/null
+    ln -sf "$DOTFILES_DIR/claude/hooks" ~/.claude/hooks
+    chmod +x "$DOTFILES_DIR/claude/hooks/"*.sh 2>/dev/null
+    echo "Claude Code hooks linked."
+fi
+
+# Set up Claude Code settings (contains API keys - not in repo)
+if [ ! -f ~/.claude/settings.json ]; then
+    if [ -f "$DOTFILES_DIR/claude/settings.json.template" ]; then
+        cp "$DOTFILES_DIR/claude/settings.json.template" ~/.claude/settings.json
+        echo "Claude Code settings.json created from template."
+        echo "NOTE: Edit ~/.claude/settings.json to add your API keys."
+    fi
+else
+    echo "Claude Code settings.json already exists (not overwriting)."
+fi
+
 # Set up ~/bin and scripts
 mkdir -p ~/bin
 for script in "$DOTFILES_DIR/bin/"*; do

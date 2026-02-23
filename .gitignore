@@ -4,6 +4,10 @@
 *.env
 .env
 
+# Claude Code sensitive files (settings.json has API keys)
+claude/settings.json
+claude/projects/
+
 # macOS
 .DS_Store
 .AppleDouble

@@ -1,0 +1,130 @@
+{
+  "env": {
+    "PAGESPEED_API_KEY": "YOUR_API_KEY_HERE"
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "command": "python3 ~/.claude/hooks/claude-island-state.py",
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "command": "python3 ~/.claude/hooks/claude-island-state.py",
+            "timeout": 86400,
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "python3 ~/.claude/hooks/claude-island-state.py",
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "command": "python3 ~/.claude/hooks/claude-island-state.py",
+            "type": "command"
+          }
+        ],
+        "matcher": "auto"
+      },
+      {
+        "hooks": [
+          {
+            "command": "python3 ~/.claude/hooks/claude-island-state.py",
+            "type": "command"
+          }
+        ],
+        "matcher": "manual"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "python3 ~/.claude/hooks/claude-island-state.py",
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "command": "python3 ~/.claude/hooks/claude-island-state.py",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "python3 ~/.claude/hooks/claude-island-state.py",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "command": "python3 ~/.claude/hooks/claude-island-state.py",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "command": "python3 ~/.claude/hooks/claude-island-state.py",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "command": "~/.claude/hooks/claudeception-activator.sh",
+            "type": "command"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "command": "python3 ~/.claude/hooks/claude-island-state.py",
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  }
+}
