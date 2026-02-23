@@ -3,8 +3,12 @@ if [[ -n "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]] && [[ "$(ps -o comm= -p $PPID 
   tmux new-session -A -s main
 fi
 
-# Show system info with Rocket on shell open
-fastfetch
+# Show system info with Rocket on shell open (ASCII art in tmux, image outside)
+if [[ -n "$TMUX" ]]; then
+  fastfetch --config ~/dotfiles/fastfetch/config-tmux.jsonc
+else
+  fastfetch
+fi
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
