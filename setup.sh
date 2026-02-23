@@ -76,6 +76,17 @@ ln -sf "$DOTFILES_DIR/fastfetch/config.jsonc" ~/.config/fastfetch/config.jsonc
 mkdir -p ~/.claude
 ln -sf "$DOTFILES_DIR/claude/CLAUDE.md" ~/.claude/CLAUDE.md
 
+# Set up Claude Code skills (with merge protection)
+if [ -d ~/.claude/skills ] && [ ! -L ~/.claude/skills ]; then
+    echo "WARNING: ~/.claude/skills exists and is not a symlink."
+    echo "To avoid losing skills, manually merge them into $DOTFILES_DIR/claude/skills/"
+    echo "Then remove ~/.claude/skills and re-run this script."
+else
+    rm -f ~/.claude/skills 2>/dev/null
+    ln -sf "$DOTFILES_DIR/claude/skills" ~/.claude/skills
+    echo "Claude Code skills linked."
+fi
+
 # Set up ~/bin and scripts
 mkdir -p ~/bin
 for script in "$DOTFILES_DIR/bin/"*; do
