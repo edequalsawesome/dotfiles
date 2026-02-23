@@ -110,8 +110,8 @@ alias brewdump="cd \"$HOME/Library/Mobile Documents/com~apple~CloudDocs/eT3_Dotf
 alias dotfiles="cd ~/dotfiles"
 alias dev="cd ~/Development"
 alias jiggybrain="cd ~/Obsidian/JiggyBrain"
-alias cc='cd ~/Claude && tmux new -A -s claude-code'
-alias ccdanger='cd ~/Claude && claude-code --dangerously-skip-permissions'
+alias cc='tmux new-window -n claude-code -c ~/Claude "claude"'
+alias ccdanger='tmux new-window -n claude-code -c ~/Claude "claude --dangerously-skip-permissions"'
 
 # === ADDITIONAL TOOLS ===
 # Bun completions
