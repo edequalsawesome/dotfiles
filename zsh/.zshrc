@@ -1,5 +1,5 @@
-# Auto-start tmux on SSH/Mosh connections
-if [[ -n "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]]; then
+# Auto-start tmux on SSH connections (skip for Mosh — Moshi handles tmux itself)
+if [[ -n "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]] && ! pgrep -P "$PPID" mosh-server > /dev/null 2>&1; then
   tmux new-session -A -s main
 fi
 
