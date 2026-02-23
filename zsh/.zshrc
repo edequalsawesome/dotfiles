@@ -1,3 +1,8 @@
+# Auto-start tmux on SSH/Mosh connections
+if [[ -n "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]]; then
+  tmux new-session -A -s main
+fi
+
 # Show system info with Rocket on shell open
 fastfetch
 
