@@ -66,6 +66,7 @@ fi
 
 # Create symlinks for config files
 ln -sf "$DOTFILES_DIR/zsh/.zshrc" ~/.zshrc
+ln -sf "$DOTFILES_DIR/zsh/.zprofile" ~/.zprofile
 mkdir -p ~/.config/ghostty
 ln -sf "$DOTFILES_DIR/ghostty/config" ~/.config/ghostty/config
 ln -sf "$DOTFILES_DIR/tmux/.tmux.conf" ~/.tmux.conf
