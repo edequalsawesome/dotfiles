@@ -15,3 +15,6 @@ font-size = 16
 # PADDING
 window-padding-x = 10
 keybind = shift+enter=text:\n
+
+# AUTO-TMUX: every Ghostty window drops into a local tmux session
+command = tmux new-session -A -s local
