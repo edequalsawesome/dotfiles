@@ -143,6 +143,22 @@ else
     echo "zsh-autosuggestions already installed."
 fi
 
+# Install zsh-syntax-highlighting
+if ! brew list zsh-syntax-highlighting &> /dev/null; then
+    echo "Installing zsh-syntax-highlighting..."
+    brew install zsh-syntax-highlighting
+else
+    echo "zsh-syntax-highlighting already installed."
+fi
+
+# Install starship prompt
+if ! command -v starship &> /dev/null; then
+    echo "Installing starship..."
+    brew install starship
+else
+    echo "starship already installed."
+fi
+
 # Install Homebrew packages from local Brewfile
 BREWFILE_PATH=$(select_brewfile "$1") || exit 1
 if [ -f "$BREWFILE_PATH" ]; then
@@ -159,6 +175,15 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
     echo "TPM installed. Start tmux and press prefix + I to install plugins."
 else
     echo "TPM already installed."
+fi
+
+# Install Catppuccin tmux theme
+if [ ! -d "$HOME/.config/tmux/plugins/catppuccin/tmux" ]; then
+    echo "Installing Catppuccin tmux theme..."
+    mkdir -p "$HOME/.config/tmux/plugins/catppuccin"
+    git clone https://github.com/catppuccin/tmux.git "$HOME/.config/tmux/plugins/catppuccin/tmux"
+else
+    echo "Catppuccin tmux theme already installed."
 fi
 
 # Install Claude Code via npm
