@@ -7,7 +7,7 @@ description: |
   non-obvious debugging, workarounds, or trial-and-error discovery. Creates new Claude Code
   skills when valuable, reusable knowledge is identified.
 author: Claude Code
-version: 3.0.0
+version: 3.1.0
 allowed-tools:
   - Read
   - Write
@@ -352,6 +352,17 @@ and line numbers.
 - [Next.js Data Fetching: getServerSideProps](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props)
 - [Next.js Error Handling](https://nextjs.org/docs/pages/building-your-application/routing/error-handling)
 ```
+
+## Session Documentation
+
+When extracting skills, also maintain session documentation using the `session-doc` skill:
+
+1. **On first skill extraction**: Create a session doc if one doesn't exist for today's topic
+2. **On each skill extraction**: Add the skill path to the session doc's "Rabbit holes" or "Key outcomes"
+3. **Update tldr**: If the skill represents the main work, update the session doc's tldr
+
+The session-doc skill handles path selection (work vs personal), frontmatter, and content structure.
+See `~/.claude/skills/session-doc/SKILL.md` for details.
 
 ## Integration with Workflow
 
