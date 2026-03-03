@@ -75,6 +75,7 @@ mkdir -p ~/.config/fastfetch
 ln -sf "$DOTFILES_DIR/fastfetch/config.jsonc" ~/.config/fastfetch/config.jsonc
 mkdir -p ~/.config
 ln -sf "$DOTFILES_DIR/starship/starship.toml" ~/.config/starship.toml
+ln -sf "$DOTFILES_DIR/aerospace/.aerospace.toml" ~/.aerospace.toml
 mkdir -p ~/.claude
 ln -sf "$DOTFILES_DIR/claude/CLAUDE.md" ~/.claude/CLAUDE.md
 
