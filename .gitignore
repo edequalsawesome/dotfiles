@@ -8,6 +8,10 @@
 claude/settings.json
 claude/projects/
 
+# Skills with personal/team data
+claude/skills/performance-cycle/
+claude/skills/weekly-update/
+
 # macOS
 .DS_Store
 .AppleDouble
