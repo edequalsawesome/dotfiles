@@ -82,5 +82,8 @@ export SSH_AUTH_SOCK=/Users/edequalsawesome/Library/Containers/com.maxgoedjen.Se
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
+# fzf shell integration (fuzzy Ctrl+R history, Ctrl+T file finder)
+source <(fzf --zsh)
+
 # Initialize Starship prompt (must be at the end)
 eval "$(starship init zsh)"

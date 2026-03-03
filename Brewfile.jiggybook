@@ -1,40 +1,46 @@
-# Brewfile.jiggybook
-instance_eval(File.read("Brewfile"))
-
-# JiggyBook-only packages below
-
-# Malware identification and classification tool
+tap "minio/stable"
+brew "chafa"
+brew "codex"
+brew "fonttools"
+brew "hugo"
+brew "node@22"
+brew "pandoc"
+brew "python@3.12"
 brew "yara"
-# MinIO Client for object storage and filesystems
+brew "youtubedr"
 brew "minio/stable/mc"
-
-# AI chatbot for many LLMs
 cask "chatwise"
-# WordPress local development tool by Flywheel
+cask "codex"
+cask "dot"
+cask "espanso"
+cask "farrago"
+cask "handbrake-app"
+cask "insta360-link-controller"
+cask "keyboardcleantool"
+cask "kiro"
 cask "local"
-# Software for Logitech devices
 cask "logi-options+"
-# Provides updates to various Microsoft products
 cask "microsoft-auto-update"
-# Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
-# Native code editor
 cask "nova"
-# Home media player
 cask "plex"
-# Client for Proton Drive
 cask "proton-drive"
-# Team communication and collaboration software
+cask "protonvpn"
+cask "resilio-sync"
 cask "slack"
-# Messaging app with a focus on speed and security
 cask "telegram"
-# Inserts pre-made snippets of text anywhere
 cask "textexpander"
-# Multiplayer code editor
+cask "thaw"
+cask "wispr-flow"
 cask "zed"
-# Gecko based web browser
 cask "zen"
-# Video communication and virtual meeting platform
 cask "zoom"
-# Xcode
-mas "Xcode", id: 497799835
+mas "CARROTweather", id: 993487541
+mas "Compressor", id: 424390742
+mas "DuckDuckGo Privacy for Safari", id: 1482920575
+mas "Parcel 2", id: 375589283
+mas "Silveran Reader", id: 0
+mas "SnippetsLab", id: 1006087419
+mas "Synctrain", id: 0
+mas "TextSniper", id: 1528890965
+uv "claude-code-transcripts"
