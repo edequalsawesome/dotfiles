@@ -21,15 +21,14 @@ default-root-container-orientation = 'auto'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 # Keep just the workspaces you'll actually use
-persistent-workspaces = ["1", "2", "3", "4", "5"]
+persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "T", "O", "W", "M"]
 
 # Workspace-to-monitor assignments (gracefully falls back when unplugged)
 [workspace-to-monitor-force-assignment]
-1 = 'Studio Display'          # Ghostty
-2 = 'Studio Display'          # Obsidian
-4 = 'Built-in Retina Display' # Slack
-5 = 'Studio Display'          # Overflow
-# 3 (Safari) goes wherever — mood-dependent
+T = 'Studio Display'          # Terminal (Ghostty)
+O = 'Studio Display'          # Obsidian
+W = 'Built-in Retina Display' # Work (Slack, Todoist, Calendar)
+M = 'Built-in Retina Display' # Messages (Messages, Telegram, Beeper)
 
 [key-mapping]
     preset = 'qwerty'
@@ -46,17 +45,42 @@ persistent-workspaces = ["1", "2", "3", "4", "5"]
 # === APP-TO-WORKSPACE ASSIGNMENTS ===
 # When these apps open, they land on the right workspace automatically
 # Find app-id with: aerospace list-apps
-[[on-window-detected]]
-if.app-id = 'md.obsidian'
-run = 'move-node-to-workspace 0'
 
-[[on-window-detected]]
-if.app-id = 'com.tinyspeck.slackmacgap'
-run = 'move-node-to-workspace 4'
-
+# T = Terminal
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = 'move-node-to-workspace 7'
+run = 'move-node-to-workspace T'
+
+# O = Obsidian
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = 'move-node-to-workspace O'
+
+# W = Work (Slack, Todoist, Calendar)
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace W'
+
+[[on-window-detected]]
+if.app-id = 'com.todoist.mac.Todoist'
+run = 'move-node-to-workspace W'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iCal'
+run = 'move-node-to-workspace W'
+
+# M = Messages (Messages, Telegram, Beeper)
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = 'move-node-to-workspace M'
+
+[[on-window-detected]]
+if.app-id = 'ru.keepcoder.Telegram'
+run = 'move-node-to-workspace M'
+
+[[on-window-detected]]
+if.app-id = 'com.automattic.beeper.desktop'
+run = 'move-node-to-workspace M'
 
 # === MAIN KEYBINDINGS ===
 [mode.main.binding]
@@ -109,10 +133,22 @@ run = 'move-node-to-workspace 7'
     alt-shift-9 = 'move-node-to-workspace 9'
     alt-shift-0 = 'move-node-to-workspace 0'
 
-    # Quick switch to last workspace
-    alt-tab = 'workspace-back-and-forth'
+    # Named workspaces
+    alt-t = 'workspace T'
+    alt-o = 'workspace O'
+    alt-w = 'workspace W'
+    alt-m = 'workspace M'
+
+    # Move windows to named workspaces
+    alt-shift-t = 'move-node-to-workspace T'
+    alt-shift-o = 'move-node-to-workspace O'
+    alt-shift-w = 'move-node-to-workspace W'
+    alt-shift-m = 'move-node-to-workspace M'
+
+    # Quick switch to last workspace (alt+tab conflicts with macOS app switcher)
+    alt-semicolon = 'workspace-back-and-forth'
     # Move workspace to next monitor
-    alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+    alt-shift-period = 'move-workspace-to-monitor --wrap-around next'
 
     # Focus the other monitor
     alt-backtick = 'focus-monitor --wrap-around next'
