@@ -8,8 +8,8 @@ description: |
   every subfolder. Root cause: single-slash /path is relative to project root, not filesystem
   root. Must use //path (double slash) for absolute filesystem paths.
 author: Claude Code
-version: 1.0.0
-date: 2026-03-03
+version: 1.1.0
+date: 2026-03-07
 ---
 
 # Claude Code Permission Absolute Paths
@@ -92,4 +92,5 @@ After (works):
 - The `**` glob itself works correctly for recursive matching; the issue is purely the path prefix
 - Settings changes require a session restart to take effect
 - `~/` also works as an alternative to `//Users/<username>/` for paths under your home directory
-- When using a hub directory with symlinks, use the **real** (resolved) paths, not the symlink paths -- Claude resolves symlinks before matching
+- **Symlinks**: Claude Code checks permissions against the **symlink path**, not the resolved target. If `~/.aerospace.toml` is a symlink to `~/dotfiles/aerospace/.aerospace.toml`, having `Edit(~/dotfiles/**)` will NOT cover edits via the `~/.aerospace.toml` path. You need an explicit permission for the symlink path itself (e.g., `Edit(~/.aerospace.toml)`).
+- For dotfiles managed via symlinks from `~/dotfiles/` to `~/`, add permissions for both the symlink paths and the target directory

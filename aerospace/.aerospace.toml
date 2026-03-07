@@ -21,7 +21,7 @@ default-root-container-orientation = 'auto'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 # Keep just the workspaces you'll actually use
-persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "T", "O", "W", "M"]
+persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "T", "O", "W", "M"]
 
 # Workspace-to-monitor assignments (gracefully falls back when unplugged)
 [workspace-to-monitor-force-assignment]
@@ -45,6 +45,19 @@ M = 'Built-in Retina Display' # Messages (Messages, Telegram, Beeper)
 # === APP-TO-WORKSPACE ASSIGNMENTS ===
 # When these apps open, they land on the right workspace automatically
 # Find app-id with: aerospace list-apps
+
+# B = Browsers (Helium, Safari, Zen)
+[[on-window-detected]]
+if.app-id = 'net.imput.helium'
+run = 'move-node-to-workspace B'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Safari'
+run = 'move-node-to-workspace B'
+
+[[on-window-detected]]
+if.app-id = 'app.zen-browser.zen'
+run = 'move-node-to-workspace B'
 
 # T = Terminal
 [[on-window-detected]]
@@ -134,12 +147,14 @@ run = 'move-node-to-workspace M'
     alt-shift-0 = 'move-node-to-workspace 0'
 
     # Named workspaces
+    alt-b = 'workspace B'
     alt-t = 'workspace T'
     alt-o = 'workspace O'
     alt-w = 'workspace W'
     alt-m = 'workspace M'
 
     # Move windows to named workspaces
+    alt-shift-b = 'move-node-to-workspace B'
     alt-shift-t = 'move-node-to-workspace T'
     alt-shift-o = 'move-node-to-workspace O'
     alt-shift-w = 'move-node-to-workspace W'
