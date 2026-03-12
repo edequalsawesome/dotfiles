@@ -169,6 +169,16 @@ else
     echo "Brewfile not found at $BREWFILE_PATH - skipping package installation"
 fi
 
+# Install global npm packages
+if command -v npm &> /dev/null; then
+    if [ -f "$DOTFILES_DIR/npm-globals.txt" ]; then
+        echo "Installing global npm packages..."
+        cat "$DOTFILES_DIR/npm-globals.txt" | xargs npm install -g
+    fi
+else
+    echo "npm not found - skipping global npm packages"
+fi
+
 # Install TPM (Tmux Plugin Manager)
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
     echo "Installing Tmux Plugin Manager..."
