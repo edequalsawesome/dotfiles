@@ -1,0 +1,3 @@
+@doist/todoist-cli
+@kilocode/cli
+vercel
