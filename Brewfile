@@ -2,26 +2,32 @@ tap "charmbracelet/tap"
 tap "minio/stable"
 tap "sst/tap"
 tap "yakitrak/yakitrak"
+brew "chafa"
 brew "fastfetch"
 brew "fzf"
 brew "ffmpeg"
+brew "fonttools"
 brew "gh"
 brew "glances"
 brew "glow"
+brew "hugo"
 brew "jq"
 brew "mas"
 brew "mosh"
 brew "node"
+brew "pandoc"
 brew "php"
 brew "starship"
 brew "tmux"
 brew "uv"
 brew "wp-cli"
 brew "xcodegen"
+brew "yara"
 brew "yt-dlp"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 brew "charmbracelet/tap/crush"
+brew "minio/stable/mc"
 brew "sst/tap/opencode"
 brew "yakitrak/yakitrak/obsidian-cli"
 tap "nikitabobko/tap"
@@ -40,10 +46,14 @@ cask "calibre"
 cask "chatgpt"
 cask "choosy"
 cask "claude"
+cask "codex"
 cask "crossover"
 cask "cursor"
+cask "dot"
 cask "dropbox"
 cask "epic-games"
+cask "espanso"
+cask "farrago"
 cask "firefox"
 cask "firefox@developer-edition"
 cask "fission"
@@ -52,10 +62,13 @@ cask "font-hack-nerd-font"
 cask "font-inconsolata-for-powerline"
 cask "font-noto-sans"
 cask "ghostty"
+cask "handbrake-app"
 cask "hazel"
 cask "helium-browser"
 cask "imageoptim"
 cask "jellyfin"
+cask "keyboardcleantool"
+cask "kiro"
 cask "loopback"
 cask "macwhisper"
 cask "makemkv"
@@ -64,9 +77,13 @@ cask "muzzle"
 cask "netnewswire"
 cask "obsidian"
 cask "orbstack"
+cask "plex"
 cask "plex-media-server"
+cask "proton-drive"
 cask "proton-mail"
+cask "protonvpn"
 cask "raycast"
+cask "resilio-sync"
 cask "rustdesk"
 cask "screens-connect"
 cask "secretive"
@@ -79,16 +96,24 @@ cask "superduper"
 cask "superwhisper"
 cask "symboliclinker"
 cask "taphouse"
+cask "telegram"
+cask "thaw"
 cask "todoist-app"
 cask "visual-studio-code"
 cask "vlc"
+cask "wispr-flow"
 cask "wordpresscom-studio"
+cask "zed"
+cask "zen"
 mas "1Password for Safari", id: 1569813296
 mas "Actions For Obsidian", id: 1659667937
 mas "Amphetamine", id: 937984704
+mas "CARROTweather", id: 993487541
 mas "ColorSlurp", id: 1287239339
+mas "Compressor", id: 424390742
 mas "ControllerForHomeKit", id: 1198176727
 mas "Drafts", id: 1435957248
+mas "DuckDuckGo Privacy for Safari", id: 1482920575
 mas "Endel", id: 1346247457
 mas "Fantastical", id: 975937182
 mas "Fin", id: 726213320
@@ -113,7 +138,7 @@ mas "Obsidian Web Clipper", id: 6720708363
 mas "Orb", id: 6477840170
 mas "Pages", id: 409201541
 mas "Parachute", id: 6748614170
-mas "Parcel Classic", id: 639968404
+mas "Parcel 2", id: 375589283
 mas "Perplexity", id: 6714467650
 mas "Photomator", id: 1444636541
 mas "PiPifier", id: 1160374471
@@ -122,10 +147,12 @@ mas "Prompt", id: 1594420480
 mas "Reeder", id: 1529448980
 mas "Screens 5", id: 1663047912
 mas "ShellFish", id: 1336634154
+mas "SnippetsLab", id: 1006087419
 mas "StopTheMadness Pro", id: 6471380298
 mas "Tampermonkey", id: 6738342400
 mas "Tampermonkey Classic", id: 1482490089
 mas "TestFlight", id: 899247664
+mas "TextSniper", id: 1528890965
 mas "uBlock Origin Lite", id: 6745342698
 mas "Vinegar", id: 1591303229
 mas "Xcode", id: 497799835
@@ -146,3 +173,4 @@ vscode "ms-vscode-remote.remote-containers"
 vscode "openai.chatgpt"
 vscode "tailscale.vscode-tailscale"
 vscode "tryghost.ghost"
+uv "claude-code-transcripts"

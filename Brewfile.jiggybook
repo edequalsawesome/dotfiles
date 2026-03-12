@@ -1,46 +1,8 @@
-tap "minio/stable"
-brew "chafa"
 brew "codex"
-brew "fonttools"
-brew "hugo"
-brew "node@22"
-brew "pandoc"
-brew "python@3.12"
-brew "yara"
-brew "youtubedr"
-brew "minio/stable/mc"
-cask "chatwise"
-cask "codex"
-cask "dot"
-cask "espanso"
-cask "farrago"
-cask "handbrake-app"
 cask "insta360-link-controller"
-cask "keyboardcleantool"
-cask "kiro"
 cask "local"
 cask "logi-options+"
 cask "microsoft-auto-update"
 cask "microsoft-teams"
-cask "nova"
-cask "plex"
-cask "proton-drive"
-cask "protonvpn"
-cask "resilio-sync"
 cask "slack"
-cask "telegram"
-cask "textexpander"
-cask "thaw"
-cask "wispr-flow"
-cask "zed"
-cask "zen"
 cask "zoom"
-mas "CARROTweather", id: 993487541
-mas "Compressor", id: 424390742
-mas "DuckDuckGo Privacy for Safari", id: 1482920575
-mas "Parcel 2", id: 375589283
-mas "Silveran Reader", id: 0
-mas "SnippetsLab", id: 1006087419
-mas "Synctrain", id: 0
-mas "TextSniper", id: 1528890965
-uv "claude-code-transcripts"
