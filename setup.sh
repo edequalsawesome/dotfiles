@@ -54,11 +54,20 @@ echo "Setting up dotfiles from $DOTFILES_DIR..."
 if ! command -v brew &> /dev/null; then
     echo "Homebrew not found. Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    
+
     # Add Homebrew to PATH for Apple Silicon Macs
     if [[ $(uname -m) == "arm64" ]]; then
         echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
         eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
+
+    # Verify Homebrew installed successfully
+    if ! command -v brew &> /dev/null; then
+        echo ""
+        echo "ERROR: Homebrew installation failed."
+        echo "If you piped this script from curl, download and run it directly instead:"
+        echo "  curl -L https://raw.githubusercontent.com/edequalsawesome/dotfiles/main/setup.sh -o /tmp/setup.sh && bash /tmp/setup.sh"
+        exit 1
     fi
 else
     echo "Homebrew already installed."
