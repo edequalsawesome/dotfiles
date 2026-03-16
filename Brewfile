@@ -34,15 +34,8 @@ tap "nikitabobko/tap"
 cask "nikitabobko/tap/aerospace"
 cask "1password"
 cask "1password-cli"
-cask "affinity-designer"
-cask "affinity-photo"
-cask "affinity-publisher"
 cask "alfred"
 cask "audio-hijack"
-cask "balenaetcher"
-cask "beeper"
-cask "betterdisplay"
-cask "calibre"
 cask "chatgpt"
 cask "choosy"
 cask "claude"
@@ -66,9 +59,7 @@ cask "handbrake-app"
 cask "hazel"
 cask "helium-browser"
 cask "imageoptim"
-cask "jellyfin"
 cask "keyboardcleantool"
-cask "kiro"
 cask "loopback"
 cask "macwhisper"
 cask "makemkv"
@@ -78,12 +69,9 @@ cask "netnewswire"
 cask "obsidian"
 cask "orbstack"
 cask "plex"
-cask "plex-media-server"
-cask "proton-drive"
 cask "proton-mail"
 cask "protonvpn"
 cask "raycast"
-cask "resilio-sync"
 cask "rustdesk"
 cask "screens-connect"
 cask "secretive"
@@ -93,7 +81,6 @@ cask "steam"
 cask "sublime-merge"
 cask "sublime-text"
 cask "superduper"
-cask "superwhisper"
 cask "symboliclinker"
 cask "taphouse"
 cask "telegram"
@@ -103,19 +90,15 @@ cask "visual-studio-code"
 cask "vlc"
 cask "wispr-flow"
 cask "wordpresscom-studio"
-cask "zed"
 cask "zen"
 mas "1Password for Safari", id: 1569813296
 mas "Actions For Obsidian", id: 1659667937
 mas "Amphetamine", id: 937984704
-mas "CARROTweather", id: 993487541
 mas "ColorSlurp", id: 1287239339
 mas "Compressor", id: 424390742
 mas "ControllerForHomeKit", id: 1198176727
 mas "Drafts", id: 1435957248
-mas "DuckDuckGo Privacy for Safari", id: 1482920575
 mas "Endel", id: 1346247457
-mas "Fantastical", id: 975937182
 mas "Fin", id: 726213320
 mas "Final Cut Pro", id: 424389933
 mas "GarageBand", id: 682658836
@@ -130,28 +113,22 @@ mas "Mapper", id: 1589391989
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
-mas "Mona 6", id: 1659154653
 mas "Motion", id: 434290957
 mas "MusicMatch", id: 1596146219
 mas "Numbers", id: 409203825
 mas "Obsidian Web Clipper", id: 6720708363
-mas "Orb", id: 6477840170
 mas "Pages", id: 409201541
 mas "Parachute", id: 6748614170
 mas "Parcel 2", id: 375589283
-mas "Perplexity", id: 6714467650
 mas "Photomator", id: 1444636541
 mas "PiPifier", id: 1160374471
 mas "Pixelmator Pro", id: 1289583905
-mas "Prompt", id: 1594420480
 mas "Reeder", id: 1529448980
 mas "Screens 5", id: 1663047912
 mas "ShellFish", id: 1336634154
-mas "SnippetsLab", id: 1006087419
 mas "StopTheMadness Pro", id: 6471380298
 mas "Tampermonkey", id: 6738342400
 mas "Tampermonkey Classic", id: 1482490089
-mas "TestFlight", id: 899247664
 mas "TextSniper", id: 1528890965
 mas "uBlock Origin Lite", id: 6745342698
 mas "Vinegar", id: 1591303229
