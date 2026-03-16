@@ -1,79 +1,121 @@
 {
   "env": {
-    "PAGESPEED_API_KEY": "YOUR_API_KEY_HERE"
+    "PAGESPEED_API_KEY": "YOUR_PAGESPEED_API_KEY_HERE"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(cp:*)",
+      "Bash(curl:*)",
+      "Bash(cat:*)",
+      "Bash(mkdir:*)",
+      "Bash(ls:*)",
+      "Bash(test:*)",
+      "Bash(source:*)",
+      "Bash(aerospace:*)",
+      "Bash(td add:*)",
+      "WebFetch(domain:getmoshi.app)",
+      "WebFetch(domain:mrmurphy.dev)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__query-docs",
+      "mcp__quill__search_meetings",
+      "mcp__quill__get_meeting",
+      "mcp__quill__get_minutes",
+      "mcp__quill__get_transcript",
+      "Skill(claudeception)",
+      "Read(~/.claude/**)",
+      "Edit(~/.claude/**)",
+      "Write(~/.claude/**)",
+      "Read(~/Obsidian/**)",
+      "Edit(~/Obsidian/**)",
+      "Write(~/Obsidian/**)",
+      "Read(~/Claude/**)",
+      "Edit(~/Claude/**)",
+      "Write(~/Claude/**)",
+      "Read(~/.config/**)",
+      "Edit(~/.config/**)",
+      "Write(~/.config/**)",
+      "Read(~/Development/**)",
+      "Edit(~/Development/**)",
+      "Write(~/Development/**)",
+      "Read(~/dotfiles/**)",
+      "Edit(~/dotfiles/**)",
+      "Write(~/dotfiles/**)",
+      "Read(~/Downloads/**)"
+    ]
   },
   "hooks": {
     "Notification": [
       {
+        "matcher": "*",
         "hooks": [
           {
-            "command": "python3 ~/.claude/hooks/claude-island-state.py",
-            "type": "command"
+            "type": "command",
+            "command": "/opt/homebrew/bin/uv run ~/.claude/hooks/claude-island-state.py"
           }
-        ],
-        "matcher": "*"
+        ]
       }
     ],
     "PermissionRequest": [
       {
+        "matcher": "*",
         "hooks": [
           {
-            "command": "python3 ~/.claude/hooks/claude-island-state.py",
-            "timeout": 86400,
-            "type": "command"
+            "type": "command",
+            "command": "/opt/homebrew/bin/uv run ~/.claude/hooks/claude-island-state.py",
+            "timeout": 86400
           }
-        ],
-        "matcher": "*"
+        ]
       }
     ],
     "PostToolUse": [
       {
+        "matcher": "*",
         "hooks": [
           {
-            "command": "python3 ~/.claude/hooks/claude-island-state.py",
-            "type": "command"
+            "type": "command",
+            "command": "/opt/homebrew/bin/uv run ~/.claude/hooks/claude-island-state.py"
           }
-        ],
-        "matcher": "*"
+        ]
       }
     ],
     "PreCompact": [
       {
+        "matcher": "auto",
         "hooks": [
           {
-            "command": "python3 ~/.claude/hooks/claude-island-state.py",
-            "type": "command"
+            "type": "command",
+            "command": "/opt/homebrew/bin/uv run ~/.claude/hooks/claude-island-state.py"
           }
-        ],
-        "matcher": "auto"
+        ]
       },
       {
+        "matcher": "manual",
         "hooks": [
           {
-            "command": "python3 ~/.claude/hooks/claude-island-state.py",
-            "type": "command"
+            "type": "command",
+            "command": "/opt/homebrew/bin/uv run ~/.claude/hooks/claude-island-state.py"
           }
-        ],
-        "matcher": "manual"
+        ]
       }
     ],
     "PreToolUse": [
       {
+        "matcher": "*",
         "hooks": [
           {
-            "command": "python3 ~/.claude/hooks/claude-island-state.py",
-            "type": "command"
+            "type": "command",
+            "command": "/opt/homebrew/bin/uv run ~/.claude/hooks/claude-island-state.py"
           }
-        ],
-        "matcher": "*"
+        ]
       }
     ],
     "SessionEnd": [
       {
         "hooks": [
           {
-            "command": "python3 ~/.claude/hooks/claude-island-state.py",
-            "type": "command"
+            "type": "command",
+            "command": "/opt/homebrew/bin/uv run ~/.claude/hooks/claude-island-state.py"
           }
         ]
       }
@@ -82,8 +124,8 @@
       {
         "hooks": [
           {
-            "command": "python3 ~/.claude/hooks/claude-island-state.py",
-            "type": "command"
+            "type": "command",
+            "command": "/opt/homebrew/bin/uv run ~/.claude/hooks/claude-island-state.py"
           }
         ]
       }
@@ -92,8 +134,8 @@
       {
         "hooks": [
           {
-            "command": "python3 ~/.claude/hooks/claude-island-state.py",
-            "type": "command"
+            "type": "command",
+            "command": "/opt/homebrew/bin/uv run ~/.claude/hooks/claude-island-state.py"
           }
         ]
       }
@@ -102,8 +144,8 @@
       {
         "hooks": [
           {
-            "command": "python3 ~/.claude/hooks/claude-island-state.py",
-            "type": "command"
+            "type": "command",
+            "command": "/opt/homebrew/bin/uv run ~/.claude/hooks/claude-island-state.py"
           }
         ]
       }
@@ -112,19 +154,36 @@
       {
         "hooks": [
           {
-            "command": "~/.claude/hooks/claudeception-activator.sh",
-            "type": "command"
+            "type": "command",
+            "command": "~/.claude/hooks/claudeception-activator.sh"
           }
         ]
       },
       {
         "hooks": [
           {
-            "command": "python3 ~/.claude/hooks/claude-island-state.py",
-            "type": "command"
+            "type": "command",
+            "command": "/opt/homebrew/bin/uv run ~/.claude/hooks/claude-island-state.py"
           }
         ]
       }
     ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "input=$(cat); user=$(whoami); host=$(hostname -s); cwd=$(echo \"$input\" | jq -r '.workspace.current_dir'); dir=\"${cwd/#$HOME/~}\"; slash_count=$(echo \"$dir\" | grep -o \"/\" | wc -l | tr -d ' '); [ \"$slash_count\" -gt 2 ] && dir=\"...$(echo \"$dir\" | awk -F'/' '{print \"/\"$(NF-1)\"/\"$NF}')\"; prompt=\"${user}@${host} in ${dir}\"; if git rev-parse --git-dir > /dev/null 2>&1; then branch=$(git -c core.fileMode=false symbolic-ref --short HEAD 2>/dev/null || git -c core.fileMode=false rev-parse --short HEAD 2>/dev/null); [ -n \"$branch\" ] && prompt=\"${prompt} on git:${branch}\"; git -c core.fileMode=false diff --quiet 2>/dev/null && git -c core.fileMode=false diff --cached --quiet 2>/dev/null || prompt=\"${prompt} [*]\"; fi; project_dir=$(echo \"$input\" | jq -r '.workspace.project_dir'); [ -f \"$project_dir/package.json\" ] && package_version=$(jq -r '.version // empty' \"$project_dir/package.json\" 2>/dev/null) && [ -n \"$package_version\" ] && prompt=\"${prompt} is v${package_version}\"; echo \"$prompt\""
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "linear@claude-plugins-official": true,
+    "obsidian@obsidian-skills": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-code-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-code"
+      }
+    }
   }
 }

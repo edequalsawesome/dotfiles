@@ -218,4 +218,10 @@ else
     echo "npm not found - skipping Claude Code installation"
 fi
 
+# Set up Claude Code MCP servers
+echo ""
+echo "To set up Claude Code MCP servers, run:"
+echo "  ~/dotfiles/claude/setup-mcps.sh          # shared MCPs only"
+echo "  ~/dotfiles/claude/setup-mcps.sh --work    # include work MCPs (context-a8c)"
+echo ""
 echo "Dotfiles setup complete!"
