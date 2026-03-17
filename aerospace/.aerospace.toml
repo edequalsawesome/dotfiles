@@ -95,9 +95,21 @@ run = 'move-node-to-workspace M'
 if.app-id = 'com.automattic.beeper.desktop'
 run = 'move-node-to-workspace M'
 
-# Finder — always float (transient file management)
+# Floating by default (alt+shift+f to snap into tiling)
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.AppStore'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'us.zoom.xos'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.quillmeetings.Quill-desktop'
 run = 'layout floating'
 
 # === MAIN KEYBINDINGS ===
@@ -174,6 +186,9 @@ run = 'layout floating'
     alt-backtick = 'focus-monitor --wrap-around next'
     # Move window to the other monitor
     alt-shift-backtick = 'move-node-to-monitor --wrap-around next'
+
+    # Toggle floating/tiling for focused window
+    alt-shift-f = 'layout floating tiling'
 
     # Enter service mode
     alt-shift-semicolon = 'mode service'
