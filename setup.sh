@@ -95,7 +95,7 @@ if [ -d ~/.claude/skills ] && [ ! -L ~/.claude/skills ]; then
     echo "Then remove ~/.claude/skills and re-run this script."
 else
     rm -f ~/.claude/skills 2>/dev/null
-    ln -sf "$DOTFILES_DIR/claude/skills" ~/.claude/skills
+    ln -sfn "$DOTFILES_DIR/claude/skills" ~/.claude/skills
     echo "Claude Code skills linked."
 fi
 
@@ -106,7 +106,7 @@ if [ -d ~/.claude/hooks ] && [ ! -L ~/.claude/hooks ]; then
     echo "Then remove ~/.claude/hooks and re-run this script."
 else
     rm -f ~/.claude/hooks 2>/dev/null
-    ln -sf "$DOTFILES_DIR/claude/hooks" ~/.claude/hooks
+    ln -sfn "$DOTFILES_DIR/claude/hooks" ~/.claude/hooks
     chmod +x "$DOTFILES_DIR/claude/hooks/"*.sh 2>/dev/null
     echo "Claude Code hooks linked."
 fi
