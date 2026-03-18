@@ -179,18 +179,25 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "input=$(cat); user=$(whoami); host=$(hostname -s); cwd=$(echo \"$input\" | jq -r '.workspace.current_dir'); dir=\"${cwd/#$HOME/~}\"; slash_count=$(echo \"$dir\" | grep -o \"/\" | wc -l | tr -d ' '); [ \"$slash_count\" -gt 2 ] && dir=\"...$(echo \"$dir\" | awk -F'/' '{print \"/\"$(NF-1)\"/\"$NF}')\"; prompt=\"${user}@${host} in ${dir}\"; if git rev-parse --git-dir > /dev/null 2>&1; then branch=$(git -c core.fileMode=false symbolic-ref --short HEAD 2>/dev/null || git -c core.fileMode=false rev-parse --short HEAD 2>/dev/null); [ -n \"$branch\" ] && prompt=\"${prompt} on git:${branch}\"; git -c core.fileMode=false diff --quiet 2>/dev/null && git -c core.fileMode=false diff --cached --quiet 2>/dev/null || prompt=\"${prompt} [*]\"; fi; project_dir=$(echo \"$input\" | jq -r '.workspace.project_dir'); [ -f \"$project_dir/package.json\" ] && package_version=$(jq -r '.version // empty' \"$project_dir/package.json\" 2>/dev/null) && [ -n \"$package_version\" ] && prompt=\"${prompt} is v${package_version}\"; echo \"$prompt\""
+    "command": "bash -c 'plugin_dir=$(ls -d \"$HOME\"/.claude/plugins/cache/claude-hud/claude-hud/*/ 2>/dev/null | awk -F/ '\"'\"'{ print $(NF-1) \"\\t\" $0 }'\"'\"' | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1 | cut -f2-); exec \"$(command -v bun 2>/dev/null || command -v node)\" \"${plugin_dir}src/index.ts\"'"
   },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
     "linear@claude-plugins-official": true,
-    "obsidian@obsidian-skills": true
+    "obsidian@obsidian-skills": true,
+    "claude-hud@claude-hud": true
   },
   "extraKnownMarketplaces": {
     "claude-code-plugins": {
       "source": {
         "source": "github",
         "repo": "anthropics/claude-code"
+      }
+    },
+    "claude-hud": {
+      "source": {
+        "source": "github",
+        "repo": "jarrodwatts/claude-hud"
       }
     }
   }
