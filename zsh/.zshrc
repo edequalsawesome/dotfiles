@@ -53,6 +53,9 @@ alias jiggybrain="cd ~/Obsidian/JiggyBrain"
 alias cc='tmux new-window -n claude-code -c ~/Claude "claude"'
 alias ccdanger='tmux new-window -n claude-code -c ~/Claude "claude --dangerously-skip-permissions"'
 
+# cmux variants
+alias ccx='cmux new-split right && cmux send "cd ~/Claude && claude\n"'
+
 # === ADDITIONAL TOOLS ===
 # Bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
@@ -84,6 +87,79 @@ export SSH_AUTH_SOCK=/Users/edequalsawesome/Library/Containers/com.maxgoedjen.Se
 
 # fzf shell integration (fuzzy Ctrl+R history, Ctrl+T file finder)
 source <(fzf --zsh)
+
+# === CMUX WORKTREE FUNCTIONS ===
+# Create git worktrees that auto-open as cmux split panes
+wtree() {
+  local branch="$1"
+  local base="${2:-$(git rev-parse --abbrev-ref HEAD)}"
+
+  if [[ -z "$branch" ]]; then
+    echo "Usage: wtree <branch-name> [base-branch]"
+    return 1
+  fi
+
+  local repo
+  repo=$(basename "$(git rev-parse --show-toplevel 2>/dev/null)") || {
+    echo "wtree: not inside a git repository"
+    return 1
+  }
+
+  local wt_path="$HOME/Development/.worktrees/$repo/$branch"
+
+  if [[ -d "$wt_path" ]]; then
+    echo "Worktree already exists at $wt_path"
+  elif git show-ref --verify --quiet "refs/heads/$branch" 2>/dev/null || \
+       git show-ref --verify --quiet "refs/remotes/origin/$branch" 2>/dev/null; then
+    git worktree add "$wt_path" "$branch"
+  else
+    git worktree add "$wt_path" -b "$branch" "$base"
+  fi
+
+  if [[ -n "$CMUX_WORKSPACE_ID" ]]; then
+    local output
+    output=$(cmux new-split right 2>&1)
+    local surface
+    surface=$(echo "$output" | grep -o 'surface:[0-9]*')
+    if [[ -n "$surface" ]]; then
+      cmux send --surface "$surface" "cd $wt_path\n"
+      cmux rename-tab --surface "$surface" "$branch"
+    else
+      echo "wtree: cmux split failed: $output"
+      cd "$wt_path"
+    fi
+  else
+    cd "$wt_path"
+  fi
+}
+
+wtree-list() {
+  git worktree list
+}
+
+wtree-rm() {
+  local branch="$1"
+  if [[ -z "$branch" ]]; then
+    echo "Usage: wtree-rm <branch-name>"
+    return 1
+  fi
+
+  local repo
+  repo=$(basename "$(git rev-parse --show-toplevel 2>/dev/null)") || {
+    echo "wtree-rm: not inside a git repository"
+    return 1
+  }
+
+  local wt_path="$HOME/Development/.worktrees/$repo/$branch"
+
+  if [[ ! -d "$wt_path" ]]; then
+    echo "wtree-rm: no worktree at $wt_path"
+    return 1
+  fi
+
+  git worktree remove "$wt_path" && git worktree prune
+  echo "Removed worktree: $branch ($wt_path)"
+}
 
 # Initialize Starship prompt (must be at the end)
 eval "$(starship init zsh)"

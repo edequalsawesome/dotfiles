@@ -64,6 +64,10 @@ run = 'move-node-to-workspace B'
 if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace T'
 
+[[on-window-detected]]
+if.app-id = 'com.cmuxterm.app'
+run = 'move-node-to-workspace T'
+
 # O = Obsidian
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
