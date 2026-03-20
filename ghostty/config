@@ -16,3 +16,5 @@ font-size = 16
 window-padding-x = 10
 keybind = shift+enter=text:\n
 
+# COPY ON SELECT
+copy-on-select = clipboard
