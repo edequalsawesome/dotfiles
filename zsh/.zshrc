@@ -163,3 +163,6 @@ wtree-rm() {
 
 # Initialize Starship prompt (must be at the end)
 eval "$(starship init zsh)"
+
+# bun completions
+[ -s "/Users/edequalsawesome/.bun/_bun" ] && source "/Users/edequalsawesome/.bun/_bun"
