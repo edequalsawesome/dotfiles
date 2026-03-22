@@ -225,4 +225,18 @@ echo "  ~/dotfiles/claude/setup-mcps.sh          # shared MCPs only"
 echo "  ~/dotfiles/claude/setup-mcps.sh --work    # include work MCPs (context-a8c)"
 echo ""
 
+# Fix Tailscale MagicDNS CDN misrouting on macOS
+# The Tailscale GUI app registers MagicDNS as a catch-all DNS resolver,
+# which breaks CDN geolocation and tanks download speeds.
+# This creates a domain-scoped resolver so only tailnet queries use MagicDNS.
+TAILNET_DOMAIN="sungrazer-allosaurus.ts.net"
+if command -v tailscale &> /dev/null; then
+    tailscale set --accept-dns=false 2>/dev/null
+    sudo mkdir -p /etc/resolver
+    echo "nameserver 100.100.100.100" | sudo tee /etc/resolver/"$TAILNET_DOMAIN" > /dev/null
+    echo "Tailscale DNS fix applied (split DNS via /etc/resolver/)."
+else
+    echo "Tailscale not found - skipping DNS fix."
+fi
+
 echo "Dotfiles setup complete!"
