@@ -48,6 +48,7 @@ export BUN_INSTALL="$HOME/.bun"
 # === ALIASES ===
 alias brewdump="cd \"$HOME/Library/Mobile Documents/com~apple~CloudDocs/eT3_Dotfiles\""
 alias dotfiles="cd ~/dotfiles"
+alias dotpull='git -C ~/dotfiles pull & git -C ~/Development/jiggyclaude pull & wait'
 alias dev="cd ~/Development"
 alias jiggybrain="cd ~/Obsidian/JiggyBrain"
 alias cc='tmux new-window -n claude-code -c ~/Claude "claude"'
