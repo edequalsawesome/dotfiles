@@ -52,6 +52,8 @@ alias dev="cd ~/Development"
 alias jiggybrain="cd ~/Obsidian/JiggyBrain"
 alias cc='tmux new-window -n claude-code -c ~/Claude "claude"'
 alias ccdanger='tmux new-window -n claude-code -c ~/Claude "claude --dangerously-skip-permissions"'
+alias claude-yolo='claude --dangerously-skip-permissions'
+alias ccyolo='tmux new-window -n claude-yolo -c ~/Claude "claude --dangerously-skip-permissions"'
 
 # cmux variants
 alias ccx='cmux new-split right && cmux send "cd ~/Claude && claude\n"'
