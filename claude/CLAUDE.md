@@ -50,6 +50,12 @@ teamMember:
 
 ---
 
+# File Deletion
+
+Always use `trash` instead of `rm` or `rm -rf` when deleting files or directories. The `trash` command (installed via Homebrew) moves items to macOS Trash instead of permanently deleting them, making mistakes recoverable.
+
+---
+
 # Read for Context
 
 Read `/Users/edequalsawesome/Obsidian/JiggyBrain/Robots/Claude Memory.md` at session start for:
