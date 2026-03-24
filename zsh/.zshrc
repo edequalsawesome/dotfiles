@@ -51,10 +51,13 @@ alias dotfiles="cd ~/dotfiles"
 alias dotpull='git -C ~/dotfiles pull & git -C ~/Development/jiggyclaude pull & wait'
 alias dev="cd ~/Development"
 alias jiggybrain="cd ~/Obsidian/JiggyBrain"
-alias cc='tmux new-window -n claude-code -c ~/Claude "claude"'
-alias ccdanger='tmux new-window -n claude-code -c ~/Claude "claude --dangerously-skip-permissions"'
+alias cc='claude'
 alias claude-yolo='claude --dangerously-skip-permissions'
-alias ccyolo='tmux new-window -n claude-yolo -c ~/Claude "claude --dangerously-skip-permissions"'
+alias ccyolo='claude --dangerously-skip-permissions'
+
+# tmux variants (for SSH/remote sessions)
+alias cc-tmux='tmux new-window -n claude-code -c ~/Claude "claude"'
+alias ccyolo-tmux='tmux new-window -n claude-yolo -c ~/Claude "claude --dangerously-skip-permissions"'
 
 # cmux variants
 alias ccx='cmux new-split right && cmux send "cd ~/Claude && claude\n"'
@@ -63,11 +66,14 @@ alias ccx='cmux new-split right && cmux send "cd ~/Claude && claude\n"'
 # Bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
+# Cache brew prefix (avoid repeated shell-outs)
+_brew_prefix=$(brew --prefix)
+
 # Zsh autosuggestions
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $_brew_prefix/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Zsh syntax highlighting (must be near end of .zshrc)
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $_brew_prefix/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # iTerm2 shell integration (only inside iTerm2)
 if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
@@ -77,12 +83,8 @@ fi
 # Kiro code nonsense
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/edequalsawesome/.lmstudio/bin"
-# End of LM Studio CLI section
-
 # Use Secretive for SSH
-export SSH_AUTH_SOCK=/Users/edequalsawesome/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
 
 # tabtab source for packages
 # uninstall by removing these lines
@@ -167,5 +169,3 @@ wtree-rm() {
 # Initialize Starship prompt (must be at the end)
 eval "$(starship init zsh)"
 
-# bun completions
-[ -s "/Users/edequalsawesome/.bun/_bun" ] && source "/Users/edequalsawesome/.bun/_bun"
