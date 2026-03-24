@@ -87,6 +87,8 @@ ln -sf "$DOTFILES_DIR/starship/starship.toml" ~/.config/starship.toml
 ln -sf "$DOTFILES_DIR/aerospace/.aerospace.toml" ~/.aerospace.toml
 mkdir -p ~/.claude
 ln -sf "$DOTFILES_DIR/claude/CLAUDE.md" ~/.claude/CLAUDE.md
+ln -sfn "$DOTFILES_DIR/claude/contexts" ~/.claude/contexts
+echo "Claude Code contexts linked."
 
 # Set up Claude Code skills (with merge protection)
 if [ -d ~/.claude/skills ] && [ ! -L ~/.claude/skills ]; then
