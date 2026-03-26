@@ -28,6 +28,7 @@ Use `trash` instead of `rm` when deleting files or folders. No flags needed for 
 
 **Frontmatter rules:**
 - `type: rollups` and `date: YYYY-MM-DD` always
+- `sessionName:` — the kebab-case name used with `/rename` (links doc back to the chat)
 - Work sessions: tag `a8c`, include `published: false`, `publishedURL:`, `teamMember:` fields
 - Personal sessions: tag `eT3`
 - Always include `tldr:` (two sentence max recap)
