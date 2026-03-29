@@ -1,6 +1,6 @@
 # Global Claude Code Config
 
-These instructions apply to ALL projects. Project-specific context lives in `~/.claude/contexts/`.
+These instructions apply to ALL projects.
 
 ---
 
@@ -12,7 +12,7 @@ Use `trash` instead of `rm` when deleting files or folders. No flags needed for 
 
 # Tool Preferences
 
-- Use `td` CLI (`~/.npm-global/bin/td`) for Todoist operations, not MCP
+- Use `td` CLI (`/opt/homebrew/bin/td`) for Todoist operations, not MCP
 - Use `obsidian` CLI for vault operations (search, properties, tags), not raw file I/O
 - MCP tools available: Context7, Playwright, Brave Search
 
@@ -37,26 +37,13 @@ Use `trash` instead of `rm` when deleting files or folders. No flags needed for 
 
 ---
 
-# File Deletion
+# Working with eD
 
-Always use `trash` instead of `rm` or `rm -rf` when deleting files or directories. The `trash` command (installed via Homebrew) moves items to macOS Trash instead of permanently deleting them, making mistakes recoverable.
-
----
-
-# Read for Context
-
-Read `/Users/edequalsawesome/Obsidian/JiggyBrain/Robots/Claude Memory.md` at session start for:
-- Communication preferences (direct, casual, no corporate fluff)
-- Active projects and current work context
-- Technical preferences and tool quirks
-- AuDHD context (hyperfocus is real, "remember later" doesn't work)
-
----
-
-# Project Type Context
-
-When working in a project, detect the type and read the relevant context file:
-- **WordPress** (has `wp-config.php`, `style.css` with Theme headers, or plugin PHP files): Read `~/.claude/contexts/wordpress.md`
+- **AuDHD**: Hyperfocus is real. "Remember to X later" doesn't work. Reduce cognitive load, don't add to it.
+- **Communication**: Direct, casual, call out overthinking. No corporate fluff or hedge language.
+- **Style**: Practical solutions over perfect ones. Don't ask permission to document — just do it.
+- **Rocket**: Golden doodle. Important.
+- **To-dos**: Drop actionable items in Todoist via `td` with actual due dates (even a week out — just so it surfaces again). Don't use Obsidian checkboxes for task tracking.
 
 ---
 
