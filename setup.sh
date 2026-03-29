@@ -86,32 +86,10 @@ mkdir -p ~/.config
 ln -sf "$DOTFILES_DIR/starship/starship.toml" ~/.config/starship.toml
 ln -sf "$DOTFILES_DIR/aerospace/.aerospace.toml" ~/.aerospace.toml
 mkdir -p ~/.claude
-ln -sf "$DOTFILES_DIR/claude/CLAUDE.md" ~/.claude/CLAUDE.md
-ln -sfn "$DOTFILES_DIR/claude/contexts" ~/.claude/contexts
-echo "Claude Code contexts linked."
 
-# Set up Claude Code skills (with merge protection)
-if [ -d ~/.claude/skills ] && [ ! -L ~/.claude/skills ]; then
-    echo "WARNING: ~/.claude/skills exists and is not a symlink."
-    echo "To avoid losing skills, manually merge them into $DOTFILES_DIR/claude/skills/"
-    echo "Then remove ~/.claude/skills and re-run this script."
-else
-    rm -f ~/.claude/skills 2>/dev/null
-    ln -sfn "$DOTFILES_DIR/claude/skills" ~/.claude/skills
-    echo "Claude Code skills linked."
-fi
-
-# Set up Claude Code hooks
-if [ -d ~/.claude/hooks ] && [ ! -L ~/.claude/hooks ]; then
-    echo "WARNING: ~/.claude/hooks exists and is not a symlink."
-    echo "To avoid losing hooks, manually merge them into $DOTFILES_DIR/claude/hooks/"
-    echo "Then remove ~/.claude/hooks and re-run this script."
-else
-    rm -f ~/.claude/hooks 2>/dev/null
-    ln -sfn "$DOTFILES_DIR/claude/hooks" ~/.claude/hooks
-    chmod +x "$DOTFILES_DIR/claude/hooks/"*.sh 2>/dev/null
-    echo "Claude Code hooks linked."
-fi
+# Claude Code runtime config (CLAUDE.md, skills, hooks, settings)
+# is managed by jiggyclaude/setup-workspace.sh — not dotfiles.
+# Only the settings template lives here for bootstrapping new machines.
 
 # Set up Claude Code settings (contains API keys - not in repo)
 if [ ! -f ~/.claude/settings.json ]; then
