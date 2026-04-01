@@ -62,6 +62,10 @@ alias ccyolo-tmux='tmux new-window -n claude-yolo -c ~/Claude "claude --dangerou
 # cmux variants
 alias ccx='cmux new-split right && cmux send "cd ~/Claude && claude\n"'
 
+# TUI tools
+alias lg='lazygit'
+alias lw='~/Development/linear-worktree/linear-worktree'
+
 # === ADDITIONAL TOOLS ===
 # Bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
