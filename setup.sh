@@ -102,6 +102,22 @@ else
     echo "Claude Code settings.json already exists (not overwriting)."
 fi
 
+# Set machine role (server = always use tmux, desktop = tmux only on SSH)
+if [ ! -f "$HOME/.machine-role" ]; then
+    echo ""
+    echo "What role does this machine serve?"
+    echo "  1) desktop  - tmux only on SSH connections (default)"
+    echo "  2) server   - always start tmux (for machines accessed remotely)"
+    printf "Choice [1]: "
+    read -r role_choice
+    case "$role_choice" in
+        2|server) echo "server" > "$HOME/.machine-role" && echo "Machine role set to: server" ;;
+        *)        echo "desktop" > "$HOME/.machine-role" && echo "Machine role set to: desktop" ;;
+    esac
+else
+    echo "Machine role already set to: $(cat "$HOME/.machine-role")"
+fi
+
 # Set up ~/bin and scripts
 mkdir -p ~/bin
 for script in "$DOTFILES_DIR/bin/"*; do

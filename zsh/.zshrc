@@ -1,6 +1,13 @@
-# Auto-start tmux on SSH connections (skip for Mosh — Moshi handles tmux itself)
-if [[ -n "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]] && [[ "$(ps -o comm= -p $PPID 2>/dev/null)" != "mosh-server" ]]; then
-  tmux new-session -A -s main
+# Auto-start tmux based on machine role (~/.machine-role)
+# "server" = always start tmux (for machines accessed primarily via remote)
+# anything else / missing = only start tmux on SSH connections
+# Always skips if already in tmux or if parent is mosh-server
+if [[ -z "$TMUX" ]] && [[ "$(ps -o comm= -p $PPID 2>/dev/null)" != "mosh-server" ]]; then
+  _machine_role=$(cat ~/.machine-role 2>/dev/null)
+  if [[ "$_machine_role" == "server" ]] || [[ -n "$SSH_CONNECTION" ]]; then
+    tmux new-session -A -s main
+  fi
+  unset _machine_role
 fi
 
 # Show system info with Rocket on shell open (ASCII art in tmux, image outside)
