@@ -1,8 +1,15 @@
+# Detect mosh session (parent process is mosh-server)
+# Mosh doesn't support the kitty graphics protocol, so we must avoid
+# fastfetch's image logo and anything else that emits non-VT escapes.
+if [[ "$(ps -o comm= -p $PPID 2>/dev/null)" == *mosh-server ]]; then
+  _is_mosh=1
+fi
+
 # Auto-start tmux based on machine role (~/.machine-role)
 # "server" = always start tmux (for machines accessed primarily via remote)
 # anything else / missing = only start tmux on SSH connections
-# Always skips if already in tmux or if parent is mosh-server
-if [[ -z "$TMUX" ]] && [[ "$(ps -o comm= -p $PPID 2>/dev/null)" != "mosh-server" ]]; then
+# Always skips if already in tmux or if this is a mosh session
+if [[ -z "$TMUX" ]] && [[ -z "$_is_mosh" ]]; then
   _machine_role=$(cat ~/.machine-role 2>/dev/null)
   if [[ "$_machine_role" == "server" ]] || [[ -n "$SSH_CONNECTION" ]]; then
     tmux new-session -A -s main
@@ -10,12 +17,15 @@ if [[ -z "$TMUX" ]] && [[ "$(ps -o comm= -p $PPID 2>/dev/null)" != "mosh-server"
   unset _machine_role
 fi
 
-# Show system info with Rocket on shell open (ASCII art in tmux, image outside)
-if [[ -n "$TMUX" ]]; then
+# Show system info with Rocket on shell open
+# - tmux or mosh: text logo (no graphics protocol)
+# - otherwise: kitty-direct image logo
+if [[ -n "$TMUX" ]] || [[ -n "$_is_mosh" ]]; then
   fastfetch --config ~/dotfiles/fastfetch/config-tmux.jsonc
 else
   fastfetch
 fi
+unset _is_mosh
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
