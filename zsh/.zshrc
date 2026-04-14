@@ -78,9 +78,14 @@ alias cc='claude'
 alias claude-yolo='claude --dangerously-skip-permissions'
 alias ccyolo='claude --dangerously-skip-permissions'
 
+# Work mode (Automattic API key + yolo)
+alias claude-a8c='ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY_A8C claude --dangerously-skip-permissions'
+alias cca8c='ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY_A8C claude --dangerously-skip-permissions'
+
 # tmux variants (for SSH/remote sessions)
 alias cc-tmux='tmux new-window -n claude-code -c ~/Claude "claude"'
 alias ccyolo-tmux='tmux new-window -n claude-yolo -c ~/Claude "claude --dangerously-skip-permissions"'
+alias cca8c-tmux='tmux new-window -n claude-a8c -c ~/Claude "ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY_A8C claude --dangerously-skip-permissions"'
 
 # cmux variants
 alias ccx='cmux new-split right && cmux send "cd ~/Claude && claude\n"'
