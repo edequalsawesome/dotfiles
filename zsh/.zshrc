@@ -1,6 +1,12 @@
-# Detect mosh session (parent process is mosh-server)
-# Mosh doesn't support the kitty graphics protocol, so we must avoid
-# fastfetch's image logo and anything else that emits non-VT escapes.
+# Detect Moshi-originated connection (SSH or mosh from the Moshi iOS app).
+# Moshi runs its own session picker and sends an explicit tmux attach after
+# the shell starts, so we must NOT auto-start tmux here (that would race the
+# picker and nest tmux inside itself, leaving Moshi's attach command visible
+# in the inner pane). Also: mosh can't transport kitty graphics, so avoid
+# fastfetch's image logo when connected via Moshi's mosh transport.
+if [[ -n "$MOSHI_TOKEN" ]]; then
+  _is_moshi=1
+fi
 if [[ "$(ps -o comm= -p $PPID 2>/dev/null)" == *mosh-server ]]; then
   _is_mosh=1
 fi
@@ -8,8 +14,8 @@ fi
 # Auto-start tmux based on machine role (~/.machine-role)
 # "server" = always start tmux (for machines accessed primarily via remote)
 # anything else / missing = only start tmux on SSH connections
-# Always skips if already in tmux or if this is a mosh session
-if [[ -z "$TMUX" ]] && [[ -z "$_is_mosh" ]]; then
+# Skips if already in tmux, a mosh session, or a Moshi-managed connection
+if [[ -z "$TMUX" ]] && [[ -z "$_is_mosh" ]] && [[ -z "$_is_moshi" ]]; then
   _machine_role=$(cat ~/.machine-role 2>/dev/null)
   if [[ "$_machine_role" == "server" ]] || [[ -n "$SSH_CONNECTION" ]]; then
     tmux new-session -A -s main
@@ -18,14 +24,14 @@ if [[ -z "$TMUX" ]] && [[ -z "$_is_mosh" ]]; then
 fi
 
 # Show system info with Rocket on shell open
-# - tmux or mosh: text logo (no graphics protocol)
+# - tmux, mosh, or Moshi: text logo (no graphics protocol)
 # - otherwise: kitty-direct image logo
-if [[ -n "$TMUX" ]] || [[ -n "$_is_mosh" ]]; then
+if [[ -n "$TMUX" ]] || [[ -n "$_is_mosh" ]] || [[ -n "$_is_moshi" ]]; then
   fastfetch --config ~/dotfiles/fastfetch/config-tmux.jsonc
 else
   fastfetch
 fi
-unset _is_mosh
+unset _is_mosh _is_moshi
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
