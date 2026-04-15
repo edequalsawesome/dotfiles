@@ -198,6 +198,34 @@ wtree-rm() {
   echo "Removed worktree: $branch ($wt_path)"
 }
 
+# moshi DIR — create/attach a tmux session rooted at a directory
+moshi() {
+  local dir="${1:-$PWD}"
+  if [[ ! -d "$dir" ]]; then
+    echo "Directory not found: $dir" >&2
+    return 1
+  fi
+
+  local abs
+  abs="$(cd "$dir" && pwd)"
+
+  local session
+  session="$(basename "$abs" | tr -cs '[:alnum:]_-' '-')"
+  session="${session#-}"
+  session="${session%-}"
+  [[ -n "$session" ]] || session="main"
+
+  if ! tmux has-session -t "$session" 2>/dev/null; then
+    tmux new-session -d -s "$session" -c "$abs" -n agent
+    tmux new-window -t "$session":2 -c "$abs" -n review
+    tmux new-window -t "$session":3 -c "$abs" -n tests
+    tmux new-window -t "$session":4 -c "$abs" -n servers
+    tmux new-window -t "$session":5 -c "$abs" -n misc
+  fi
+
+  tmux attach -t "$session"
+}
+
 # Initialize Starship prompt (must be at the end)
 eval "$(starship init zsh)"
 
