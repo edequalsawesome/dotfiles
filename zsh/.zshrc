@@ -4,7 +4,7 @@
 # picker and nest tmux inside itself, leaving Moshi's attach command visible
 # in the inner pane). Also: mosh can't transport kitty graphics, so avoid
 # fastfetch's image logo when connected via Moshi's mosh transport.
-if [[ -n "$MOSHI_TOKEN" ]]; then
+if [[ -n "$MOSHI_SESSION" ]]; then
   _is_moshi=1
 fi
 if [[ "$(ps -o comm= -p $PPID 2>/dev/null)" == *mosh-server ]]; then
