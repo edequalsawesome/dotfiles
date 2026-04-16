@@ -82,4 +82,12 @@ OVERLAY_COUNT=$(grep -cv '^[[:space:]]*$' "$OVERLAY_FILE" || true)
 
 echo "brewfile-sync: $FRIENDLY"
 echo "  dump:    $FULL_COUNT lines"
-echo "  overlay: $OVERLAY_COUNT lines -> $OVERLAY_FILE"
+
+# If the overlay came out empty, remove it rather than leaving a no-op file
+# that setup.sh will still try to brew-bundle-install.
+if [[ ! -s "$OVERLAY_FILE" ]]; then
+  rm -f "$OVERLAY_FILE"
+  echo "  overlay: 0 lines (machine matches base — $OVERLAY_FILE removed)"
+else
+  echo "  overlay: $OVERLAY_COUNT lines -> $OVERLAY_FILE"
+fi
