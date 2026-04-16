@@ -1,0 +1,79 @@
+tap "anomalyco/tap"
+tap "fastrepl/fastrepl"
+tap "hmenzagh/tap"
+tap "marcus/tap"
+tap "minio/stable"
+tap "sst/tap"
+tap "yakitrak/yakitrak"
+brew "hugo"
+brew "mole"
+brew "xcodegen"
+brew "anomalyco/tap/opencode"
+brew "hmenzagh/tap/ccmeter"
+brew "marcus/tap/sidecar"
+brew "minio/stable/mc"
+brew "yakitrak/yakitrak/obsidian-cli"
+cask "affinity-designer"
+cask "affinity-photo"
+cask "affinity-publisher"
+cask "audio-hijack"
+cask "balenaetcher"
+cask "beeper"
+cask "betterdisplay"
+cask "fastrepl/fastrepl/char"
+cask "chatgpt"
+cask "cleanshot"
+cask "crossover"
+cask "dockdoor"
+cask "epic-games"
+cask "farrago"
+cask "fission"
+cask "handbrake-app"
+cask "kiro"
+cask "loopback"
+cask "macwhisper"
+cask "makemkv"
+cask "mdrp"
+cask "plex"
+cask "plex-media-server"
+cask "proton-drive"
+cask "resilio-sync"
+cask "screens-connect"
+cask "setapp"
+cask "steam"
+cask "superwhisper"
+cask "taphouse"
+cask "thaw"
+cask "visual-studio-code"
+cask "zed"
+mas "Compressor", id: 424390742
+mas "Developer", id: 640199958
+mas "Final Cut Pro", id: 424389933
+mas "Logic Pro", id: 634148309
+mas "Mona 6", id: 1659154653
+mas "Motion", id: 434290957
+mas "Orb", id: 6477840170
+mas "Parcel", id: 375589283
+mas "PCalc", id: 403504866
+mas "Perplexity", id: 6714467650
+mas "Photomator", id: 1444636541
+mas "Pixelmator Pro", id: 1289583905
+mas "PowerWash Simulator", id: 6477445344
+mas "Return to Monkey Island", id: 6476317779
+mas "Screens 5", id: 1663047912
+mas "SnippetsLab", id: 1006087419
+vscode "ahmadawais.shades-of-purple"
+vscode "anthropic.claude-code"
+vscode "github.copilot-chat"
+vscode "kilocode.kilo-code"
+vscode "mhutchie.git-graph"
+vscode "ms-azuretools.vscode-containers"
+vscode "ms-azuretools.vscode-docker"
+vscode "ms-python.debugpy"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
+vscode "ms-python.vscode-python-envs"
+vscode "ms-vscode-remote.remote-containers"
+vscode "openai.chatgpt"
+vscode "tailscale.vscode-tailscale"
+vscode "tryghost.ghost"

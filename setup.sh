@@ -14,27 +14,14 @@ fi
 # Set the dotfiles directory
 DOTFILES_DIR="$HOME/dotfiles"
 
-# Determine which Brewfile to use
-select_brewfile() {
-    local machine="$1"
-
-    if [ -n "$machine" ] && [ -f "$DOTFILES_DIR/Brewfile.$machine" ]; then
-        echo "$DOTFILES_DIR/Brewfile.$machine"
-    elif [ -n "$machine" ] && [ "$machine" = "base" ]; then
-        echo "$DOTFILES_DIR/Brewfile"
-    elif [ -n "$machine" ]; then
-        echo "Unknown machine profile: $machine" >&2
-        echo "" >&2
-        echo "Available machine profiles:" >&2
-        echo "  base      - Base packages only" >&2
-        for f in "$DOTFILES_DIR"/Brewfile.*; do
-            [ -f "$f" ] && echo "  $(basename "$f" | sed 's/Brewfile\.//')      - $(basename "$f")" >&2
-        done
-        exit 1
-    else
-        # No argument provided - default to base
-        echo "$DOTFILES_DIR/Brewfile"
-    fi
+# Map LocalHostName -> friendly Brewfile suffix. Keep in sync with bin/brewfile-sync.
+host_to_friendly() {
+    case "$(echo "$1" | tr '[:upper:]' '[:lower:]')" in
+        jiggymini)     echo "jiggymini" ;;
+        jiggybook-pro) echo "jiggybook" ;;
+        jiggybook-air) echo "jiggyair"  ;;
+        *)             echo ""          ;;
+    esac
 }
 
 echo "Downloading dotfiles from GitHub"
@@ -165,13 +152,35 @@ else
     echo "starship already installed."
 fi
 
-# Install Homebrew packages from local Brewfile
-BREWFILE_PATH=$(select_brewfile "$1") || exit 1
-if [ -f "$BREWFILE_PATH" ]; then
-    echo "Installing Homebrew packages from $BREWFILE_PATH..."
-    brew bundle install --file="$BREWFILE_PATH"
+# Install Homebrew packages: always install base, then optional host overlay.
+if [ -f "$DOTFILES_DIR/Brewfile" ]; then
+    echo "Installing base Homebrew packages..."
+    brew bundle install --file="$DOTFILES_DIR/Brewfile"
 else
-    echo "Brewfile not found at $BREWFILE_PATH - skipping package installation"
+    echo "Base Brewfile not found at $DOTFILES_DIR/Brewfile - skipping base"
+fi
+
+LOCAL_HOST="$(scutil --get LocalHostName 2>/dev/null || echo '')"
+if [ -n "${1-}" ]; then
+    FRIENDLY="$1"
+else
+    FRIENDLY=$(host_to_friendly "$LOCAL_HOST")
+fi
+
+# Validate friendly name is a safe path component — it becomes Brewfile.$FRIENDLY.
+if [ -n "$FRIENDLY" ] && ! echo "$FRIENDLY" | grep -Eq '^[A-Za-z0-9._-]+$'; then
+    echo "ERROR: invalid friendly name '$FRIENDLY' (allowed: A-Za-z0-9._-)" >&2
+    exit 1
+fi
+
+if [ -n "$FRIENDLY" ] && [ -f "$DOTFILES_DIR/Brewfile.$FRIENDLY" ]; then
+    echo "Installing host overlay: $FRIENDLY..."
+    brew bundle install --file="$DOTFILES_DIR/Brewfile.$FRIENDLY"
+elif [ -n "$FRIENDLY" ]; then
+    echo "No host overlay at $DOTFILES_DIR/Brewfile.$FRIENDLY - skipping"
+else
+    echo "No host overlay mapping for $LOCAL_HOST - skipping"
+    echo "  (edit host_to_friendly() in setup.sh + bin/brewfile-sync to add this machine)"
 fi
 
 # Install global npm packages
