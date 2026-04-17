@@ -229,3 +229,5 @@ moshi() {
 # Initialize Starship prompt (must be at the end)
 eval "$(starship init zsh)"
 
+# Mole shell completion
+if output="$(mole completion zsh 2>/dev/null)"; then eval "$output"; fi
