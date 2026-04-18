@@ -282,6 +282,9 @@ plugins {
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
+    // Third-party plugins (pinned to release download URLs so they auto-update)
+    zellaude location="https://github.com/ishefi/zellaude/releases/latest/download/zellaude.wasm"
+    vertical-tabs location="https://github.com/cfal/zellij-vertical-tabs/releases/latest/download/zellij-vertical-tabs.wasm"
 }
 
 // Plugins to load in the background when a new session starts
@@ -310,8 +313,8 @@ web_client {
  
 // Choose the theme that is specified in the themes section.
 // Default: default
-// 
-// theme "dracula"
+//
+theme "catppuccin-mocha"
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -329,8 +332,8 @@ default_mode "normal"
  
 // The name of the default layout to load on startup
 // Default: "default"
-// 
-// default_layout "compact"
+//
+default_layout "default"
  
 // The folder in which Zellij will look for layouts
 // (Requires restart)
@@ -394,8 +397,8 @@ default_mode "normal"
 // copy_command "wl-copy"                    // wayland
 // copy_command "pbcopy"                     // osx
 // 
-// copy_command "pbcopy"
- 
+copy_command "pbcopy"
+
 // Choose the destination for copied text
 // Allows using the primary selection buffer (on x11/wayland) instead of the system clipboard.
 // Does not apply when using copy_command.
@@ -438,8 +441,8 @@ default_mode "normal"
 // Options:
 //   - true (default)
 //   - false
-// 
-// session_serialization false
+//
+session_serialization true
  
 // Whether pane viewports are serialized along with the session, default is false
 // Options:

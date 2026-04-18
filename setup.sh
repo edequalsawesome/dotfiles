@@ -72,8 +72,11 @@ ln -sf "$DOTFILES_DIR/fastfetch/config.jsonc" ~/.config/fastfetch/config.jsonc
 mkdir -p ~/.config
 ln -sf "$DOTFILES_DIR/starship/starship.toml" ~/.config/starship.toml
 ln -sf "$DOTFILES_DIR/aerospace/.aerospace.toml" ~/.aerospace.toml
-mkdir -p ~/.config/zellij
+mkdir -p ~/.config/zellij/layouts
 ln -sf "$DOTFILES_DIR/zellij/config.kdl" ~/.config/zellij/config.kdl
+for layout in "$DOTFILES_DIR/zellij/layouts/"*.kdl; do
+    [ -f "$layout" ] && ln -sf "$layout" ~/.config/zellij/layouts/$(basename "$layout")
+done
 mkdir -p ~/.config/cmux
 ln -sf "$DOTFILES_DIR/cmux/settings.json" ~/.config/cmux/settings.json
 mkdir -p ~/.claude

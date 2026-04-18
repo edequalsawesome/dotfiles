@@ -1,0 +1,16 @@
+// Default layout — zellaude on top (Claude-aware tab bar), status bar on bottom
+layout {
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellaude"
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="status-bar"
+        }
+    }
+
+    tab name="shell" focus=true {
+        pane
+    }
+}
