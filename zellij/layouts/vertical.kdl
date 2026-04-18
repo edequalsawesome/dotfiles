@@ -1,39 +1,10 @@
 // Vertical tabs layout — use with: zellij --layout vertical
-// Tab sidebar on the left, zjstatus on bottom
+// Tab sidebar on the left, built-in status bar on bottom
 layout {
     default_tab_template {
         children
-        pane size=1 borderless=true {
-            plugin location="zjstatus" {
-                format_left   "#[bg=#1e1e2e,fg=#cba6f7,bold] {mode} #[bg=#1e1e2e,fg=#89b4fa,bold]{session}"
-                format_center ""
-                format_right  "{command_battery}#[bg=#1e1e2e,fg=#6c7086] │ {datetime}"
-                format_space  "#[bg=#1e1e2e]"
-
-                border_enabled "false"
-                hide_frame_for_single_pane "true"
-
-                mode_normal      "#[bg=#89b4fa,fg=#1e1e2e,bold] NORMAL "
-                mode_locked      "#[bg=#f38ba8,fg=#1e1e2e,bold] LOCKED "
-                mode_pane        "#[bg=#fab387,fg=#1e1e2e,bold] PANE "
-                mode_tab         "#[bg=#f9e2af,fg=#1e1e2e,bold] TAB "
-                mode_resize      "#[bg=#f5c2e7,fg=#1e1e2e,bold] RESIZE "
-                mode_move        "#[bg=#cba6f7,fg=#1e1e2e,bold] MOVE "
-                mode_scroll      "#[bg=#94e2d5,fg=#1e1e2e,bold] SCROLL "
-                mode_search      "#[bg=#94e2d5,fg=#1e1e2e,bold] SEARCH "
-                mode_session     "#[bg=#a6e3a1,fg=#1e1e2e,bold] SESSION "
-                mode_tmux        "#[bg=#fab387,fg=#1e1e2e,bold] TMUX "
-                mode_renamepane  "#[bg=#f9e2af,fg=#1e1e2e,bold] RENAME "
-                mode_renametab   "#[bg=#f9e2af,fg=#1e1e2e,bold] RENAME "
-
-                command_battery_command    "pmset -g batt | grep -Eo '[0-9]+%' | head -n1"
-                command_battery_format     "#[bg=#1e1e2e,fg=#a6e3a1,bold] BAT {stdout} "
-                command_battery_interval   "30"
-                command_battery_rendermode "static"
-
-                datetime        "#[bg=#1e1e2e,fg=#f5c2e7,bold]{format}"
-                datetime_format "%a %d %b %H:%M"
-            }
+        pane size=2 borderless=true {
+            plugin location="status-bar"
         }
     }
 
