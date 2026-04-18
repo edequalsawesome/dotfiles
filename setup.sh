@@ -72,6 +72,10 @@ ln -sf "$DOTFILES_DIR/fastfetch/config.jsonc" ~/.config/fastfetch/config.jsonc
 mkdir -p ~/.config
 ln -sf "$DOTFILES_DIR/starship/starship.toml" ~/.config/starship.toml
 ln -sf "$DOTFILES_DIR/aerospace/.aerospace.toml" ~/.aerospace.toml
+mkdir -p ~/.config/zellij
+ln -sf "$DOTFILES_DIR/zellij/config.kdl" ~/.config/zellij/config.kdl
+mkdir -p ~/.config/cmux
+ln -sf "$DOTFILES_DIR/cmux/settings.json" ~/.config/cmux/settings.json
 mkdir -p ~/.claude
 
 # Claude Code runtime config (CLAUDE.md, skills, hooks, settings)
