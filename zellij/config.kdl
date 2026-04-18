@@ -160,12 +160,24 @@ keybinds clear-defaults=true {
         bind "Alt ]" { NextSwapLayout; }
         bind "Alt f" { ToggleFloatingPanes; }
         bind "Ctrl g" { SwitchToMode "locked"; }
+        bind "Alt g" {
+            LaunchOrFocusPlugin "ghost" {
+                floating true
+                move_to_focused_tab true
+            }
+        }
         bind "Alt i" { MoveTab "left"; }
         bind "Alt n" { NewPane; }
         bind "Alt o" { MoveTab "right"; }
         bind "Alt p" { TogglePaneInGroup; }
         bind "Alt Shift p" { ToggleGroupMarking; }
         bind "Ctrl q" { Quit; }
+        bind "Ctrl y" {
+            LaunchOrFocusPlugin "zellij-forgot" {
+                floating true
+                move_to_focused_tab true
+            }
+        }
     }
     shared_except "locked" "move" {
         bind "Ctrl h" { SwitchToMode "move"; }
@@ -285,6 +297,9 @@ plugins {
     // Third-party plugins (pinned to release download URLs so they auto-update)
     zellaude location="https://github.com/ishefi/zellaude/releases/latest/download/zellaude.wasm"
     vertical-tabs location="https://github.com/cfal/zellij-vertical-tabs/releases/latest/download/zellij-vertical-tabs.wasm"
+    zellij-forgot location="https://github.com/karimould/zellij-forgot/releases/latest/download/zellij_forgot.wasm"
+    ghost location="https://github.com/vdbulcke/ghost/releases/latest/download/ghost.wasm"
+    zjstatus location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm"
 }
 
 // Plugins to load in the background when a new session starts
