@@ -26,11 +26,12 @@ fi
 # Show system info with Rocket on shell open
 # - tmux, zellij, mosh, or Moshi: text logo (no graphics protocol passthrough)
 # - otherwise: kitty-direct image logo
+# Alias persists so manual `fastfetch` invocations also use the text logo
+# instead of falling back to fastfetch's built-in Apple ASCII.
 if [[ -n "$TMUX" ]] || [[ -n "$ZELLIJ" ]] || [[ -n "$_is_mosh" ]] || [[ -n "$_is_moshi" ]]; then
-  fastfetch --config ~/dotfiles/fastfetch/config-tmux.jsonc
-else
-  fastfetch
+  alias fastfetch='fastfetch --config ~/dotfiles/fastfetch/config-tmux.jsonc'
 fi
+fastfetch
 unset _is_mosh _is_moshi
 
 # Path to your Oh My Zsh installation.
