@@ -226,16 +226,18 @@ moshi() {
   tmux attach -t "$session"
 }
 
-# Auto-rename Zellij tab to current directory basename ("~" for $HOME)
+# Auto-rename the Zellij *pane* (not tab) to the current dir basename.
+# Per-pane so that two panes in the same tab with different cwds each get
+# their own label instead of fighting over the single tab name.
 if [[ -n "$ZELLIJ" ]]; then
-  _zellij_rename_tab() {
+  _zellij_rename_pane() {
     local name="${PWD##*/}"
     [[ "$PWD" == "$HOME" ]] && name="~"
-    command zellij action rename-tab "$name" 2>/dev/null
+    command zellij action rename-pane "$name" 2>/dev/null
   }
   autoload -Uz add-zsh-hook
-  add-zsh-hook chpwd _zellij_rename_tab
-  _zellij_rename_tab
+  add-zsh-hook chpwd _zellij_rename_pane
+  _zellij_rename_pane
 fi
 
 # Initialize Starship prompt (must be at the end)
