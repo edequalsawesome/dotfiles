@@ -16,6 +16,7 @@ brew "mosh"
 brew "node"
 brew "pandoc"
 brew "php"
+brew "rustup" # needed to build zellij-project-sidebar (and future wasm plugins): run `rustup-init -y` then `rustup target add wasm32-wasip1`
 brew "starship"
 brew "tailscale", restart_service: :changed
 brew "terminal-notifier"

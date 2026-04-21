@@ -1,26 +1,20 @@
-// Vertical tabs layout — use with: zellij --layout vertical
-// Tab sidebar on the left, built-in status bar on bottom.
-//
-// Note: The sidebar only appears on the initial tab. New tabs (Ctrl+t n)
-// use Zellij's default template without the sidebar. This is a limitation
-// of the Zellij layout system: `children` cannot be nested inside another
-// `pane` in default_tab_template without breaking auto-spawn of the
-// terminal pane for new tabs. The plugin's own examples work this way too.
-// Recommended workflow: keep one tab, split into multiple panes as needed.
+// Project sidebar layout — uses AndrewBeniston/zellij-project-sidebar.
+// The plugin registers Cmd+T globally so EVERY new tab includes the
+// sidebar (unlike cfal/zellij-vertical-tabs). Cmd+O toggles focus to
+// the sidebar. Requires Ghostty to pass Cmd+T and Cmd+O through —
+// configured via `keybind = cmd+t=unbind` / `cmd+o=unbind` in the
+// Ghostty config.
 layout {
-    default_tab_template {
-        children
-        pane size=2 borderless=true {
-            plugin location="status-bar"
-        }
-    }
-
-    tab focus=true {
-        pane split_direction="vertical" {
-            pane size=20 borderless=true {
-                plugin location="vertical-tabs"
+    pane split_direction="vertical" {
+        pane size=20 borderless=true name="Projects" {
+            plugin location="file:~/.config/zellij/plugins/zellij-project-sidebar.wasm" {
+                scan_dir "/Users/edequalsawesome/Development"
+                session_layout "/Users/edequalsawesome/.config/zellij/layouts/vertical.kdl"
             }
-            pane
         }
+        pane
+    }
+    pane size=2 borderless=true {
+        plugin location="status-bar"
     }
 }

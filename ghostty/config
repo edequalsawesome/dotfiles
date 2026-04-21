@@ -18,3 +18,8 @@ keybind = shift+enter=text:\n
 
 # COPY ON SELECT
 copy-on-select = clipboard
+
+# Pass Cmd+T and Cmd+O through to Zellij so the project-sidebar plugin's
+# new-tab-with-sidebar and toggle-sidebar-focus bindings work.
+keybind = cmd+t=unbind
+keybind = cmd+o=unbind
