@@ -286,19 +286,18 @@ plugins {
     filepicker location="zellij:strider" {
         cwd "/"
     }
+    ghost location="https://github.com/vdbulcke/ghost/releases/latest/download/ghost.wasm"
     plugin-manager location="zellij:plugin-manager"
     session-manager location="zellij:session-manager"
     status-bar location="zellij:status-bar"
     strider location="zellij:strider"
     tab-bar location="zellij:tab-bar"
+    vertical-tabs location="https://github.com/cfal/zellij-vertical-tabs/releases/latest/download/zellij-vertical-tabs.wasm"
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
-    // Third-party plugins (pinned to release download URLs so they auto-update)
     zellaude location="https://github.com/ishefi/zellaude/releases/latest/download/zellaude.wasm"
-    vertical-tabs location="https://github.com/cfal/zellij-vertical-tabs/releases/latest/download/zellij-vertical-tabs.wasm"
     zellij-forgot location="https://github.com/karimould/zellij-forgot/releases/latest/download/zellij_forgot.wasm"
-    ghost location="https://github.com/vdbulcke/ghost/releases/latest/download/ghost.wasm"
 }
 
 // Plugins to load in the background when a new session starts
@@ -327,7 +326,7 @@ web_client {
  
 // Choose the theme that is specified in the themes section.
 // Default: default
-//
+// 
 theme "catppuccin-mocha"
  
 // Choose the base input mode of zellij.
@@ -346,7 +345,7 @@ default_mode "normal"
  
 // The name of the default layout to load on startup
 // Default: "default"
-//
+// 
 default_layout "vertical"
  
 // The folder in which Zellij will look for layouts
@@ -412,7 +411,7 @@ default_layout "vertical"
 // copy_command "pbcopy"                     // osx
 // 
 copy_command "pbcopy"
-
+ 
 // Choose the destination for copied text
 // Allows using the primary selection buffer (on x11/wayland) instead of the system clipboard.
 // Does not apply when using copy_command.
@@ -455,7 +454,7 @@ copy_command "pbcopy"
 // Options:
 //   - true (default)
 //   - false
-//
+// 
 session_serialization true
  
 // Whether pane viewports are serialized along with the session, default is false
@@ -549,7 +548,7 @@ session_serialization true
 // Whether to show tips on startup
 // Default: true
 // 
-// show_startup_tips false
+show_startup_tips false
  
 // Whether to show release notes on first version run
 // Default: true
