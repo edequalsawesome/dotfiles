@@ -227,28 +227,33 @@ moshi() {
   tmux attach -t "$session"
 }
 
-# Auto-label Zellij panes and tabs from the shell cwd:
-# - Pane name  = cwd basename (per-pane; each pane labels itself)
-# - Tab name   = git repo root basename, falling back to cwd basename
-#   (stable across subdirs of the same project; override with Ctrl+t r)
+# Zellij auto-labeling:
+# - Pane name  = cwd basename, updated on every `cd` (each pane labels itself).
+# - Tab name   = git branch on shell startup, falling back to cwd basename.
+#   Tab name is set ONCE per shell (not on chpwd) so manual `Ctrl+t r`
+#   renames stick — the hook only wins at shell start.
 if [[ -n "$ZELLIJ" ]]; then
-  _zellij_rename_pane_and_tab() {
-    local pane_name="${PWD##*/}"
-    [[ "$PWD" == "$HOME" ]] && pane_name="~"
-    command zellij action rename-pane "$pane_name" 2>/dev/null
-
-    local repo tab_name
-    repo=$(git rev-parse --show-toplevel 2>/dev/null)
-    if [[ -n "$repo" ]]; then
-      tab_name="${repo##*/}"
+  _zellij_rename_pane() {
+    local name="${PWD##*/}"
+    [[ "$PWD" == "$HOME" ]] && name="~"
+    command zellij action rename-pane "$name" 2>/dev/null
+  }
+  _zellij_initial_tab_label() {
+    local branch
+    branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+    local tab_name
+    if [[ -n "$branch" && "$branch" != "HEAD" ]]; then
+      tab_name="$branch"
     else
-      tab_name="$pane_name"
+      tab_name="${PWD##*/}"
+      [[ "$PWD" == "$HOME" ]] && tab_name="~"
     fi
     command zellij action rename-tab "$tab_name" 2>/dev/null
   }
   autoload -Uz add-zsh-hook
-  add-zsh-hook chpwd _zellij_rename_pane_and_tab
-  _zellij_rename_pane_and_tab
+  add-zsh-hook chpwd _zellij_rename_pane
+  _zellij_rename_pane
+  _zellij_initial_tab_label
 fi
 
 # Initialize Starship prompt (must be at the end)
