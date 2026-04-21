@@ -1,19 +1,19 @@
 // Vertical tabs layout — use with: zellij --layout vertical
-// Tab sidebar on the left, built-in status bar on bottom
+// Tab sidebar on the left of every tab, built-in status bar on bottom.
 layout {
     default_tab_template {
-        children
+        pane split_direction="vertical" {
+            pane size=20 borderless=true {
+                plugin location="vertical-tabs"
+            }
+            children
+        }
         pane size=2 borderless=true {
             plugin location="status-bar"
         }
     }
 
-    tab name="shell" focus=true {
-        pane split_direction="vertical" {
-            pane size=20 borderless=true {
-                plugin location="vertical-tabs"
-            }
-            pane
-        }
+    tab focus=true {
+        pane
     }
 }
