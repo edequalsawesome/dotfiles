@@ -226,18 +226,28 @@ moshi() {
   tmux attach -t "$session"
 }
 
-# Auto-rename the Zellij *pane* (not tab) to the current dir basename.
-# Per-pane so that two panes in the same tab with different cwds each get
-# their own label instead of fighting over the single tab name.
+# Auto-label Zellij panes and tabs from the shell cwd:
+# - Pane name  = cwd basename (per-pane; each pane labels itself)
+# - Tab name   = git repo root basename, falling back to cwd basename
+#   (stable across subdirs of the same project; override with Ctrl+t r)
 if [[ -n "$ZELLIJ" ]]; then
-  _zellij_rename_pane() {
-    local name="${PWD##*/}"
-    [[ "$PWD" == "$HOME" ]] && name="~"
-    command zellij action rename-pane "$name" 2>/dev/null
+  _zellij_rename_pane_and_tab() {
+    local pane_name="${PWD##*/}"
+    [[ "$PWD" == "$HOME" ]] && pane_name="~"
+    command zellij action rename-pane "$pane_name" 2>/dev/null
+
+    local repo tab_name
+    repo=$(git rev-parse --show-toplevel 2>/dev/null)
+    if [[ -n "$repo" ]]; then
+      tab_name="${repo##*/}"
+    else
+      tab_name="$pane_name"
+    fi
+    command zellij action rename-tab "$tab_name" 2>/dev/null
   }
   autoload -Uz add-zsh-hook
-  add-zsh-hook chpwd _zellij_rename_pane
-  _zellij_rename_pane
+  add-zsh-hook chpwd _zellij_rename_pane_and_tab
+  _zellij_rename_pane_and_tab
 fi
 
 # Initialize Starship prompt (must be at the end)
