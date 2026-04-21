@@ -24,9 +24,9 @@ if [[ -z "$TMUX" ]] && [[ -z "$_is_mosh" ]] && [[ -z "$_is_moshi" ]]; then
 fi
 
 # Show system info with Rocket on shell open
-# - tmux, mosh, or Moshi: text logo (no graphics protocol)
+# - tmux, zellij, mosh, or Moshi: text logo (no graphics protocol passthrough)
 # - otherwise: kitty-direct image logo
-if [[ -n "$TMUX" ]] || [[ -n "$_is_mosh" ]] || [[ -n "$_is_moshi" ]]; then
+if [[ -n "$TMUX" ]] || [[ -n "$ZELLIJ" ]] || [[ -n "$_is_mosh" ]] || [[ -n "$_is_moshi" ]]; then
   fastfetch --config ~/dotfiles/fastfetch/config-tmux.jsonc
 else
   fastfetch
