@@ -226,6 +226,18 @@ moshi() {
   tmux attach -t "$session"
 }
 
+# Auto-rename Zellij tab to current directory basename ("~" for $HOME)
+if [[ -n "$ZELLIJ" ]]; then
+  _zellij_rename_tab() {
+    local name="${PWD##*/}"
+    [[ "$PWD" == "$HOME" ]] && name="~"
+    command zellij action rename-tab "$name" 2>/dev/null
+  }
+  autoload -Uz add-zsh-hook
+  add-zsh-hook chpwd _zellij_rename_tab
+  _zellij_rename_tab
+fi
+
 # Initialize Starship prompt (must be at the end)
 eval "$(starship init zsh)"
 
