@@ -84,7 +84,7 @@ run = 'move-node-to-workspace W'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
-run = 'move-node-to-workspace W'
+run = ['move-node-to-workspace W', 'layout floating']
 
 # M = Messages (Messages, Telegram, Beeper)
 [[on-window-detected]]
