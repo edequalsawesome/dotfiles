@@ -113,8 +113,12 @@ if.app-id = 'us.zoom.xos'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-id = 'com.quillmeetings.Quill-desktop'
+if.app-id = 'com.electron.studio'
 run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.quillmeetings.Quill-desktop'
+run = 'move-node-to-workspace 8'
 
 # === MAIN KEYBINDINGS ===
 [mode.main.binding]
