@@ -68,6 +68,12 @@ run = 'move-node-to-workspace T'
 if.app-id = 'com.cmuxterm.app'
 run = 'move-node-to-workspace T'
 
+# Google Chrome = Playwright MCP browser (not a daily-driver browser here).
+# Route to T and float so it doesn't disrupt terminal tiling.
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = ['move-node-to-workspace T', 'layout floating']
+
 # O = Obsidian
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
