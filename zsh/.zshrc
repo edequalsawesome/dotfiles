@@ -64,6 +64,7 @@ path+=(
   "$HOME/.codeium/windsurf/bin"
   "$HOME/.npm-global/bin"
   "$HOME/.local/bin"
+  "$HOME/go/bin"
 )
 
 # Bun
@@ -256,8 +257,11 @@ if [[ -n "$ZELLIJ" ]]; then
   _zellij_initial_tab_label
 fi
 
-# Initialize Starship prompt (must be at the end)
-eval "$(starship init zsh)"
-
 # Mole shell completion
 if output="$(mole completion zsh 2>/dev/null)"; then eval "$output"; fi
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+# Initialize Starship prompt (must be at the end)
+eval "$(starship init zsh)"
