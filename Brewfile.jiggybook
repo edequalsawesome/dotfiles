@@ -1,8 +1,90 @@
-brew "codex"
-cask "insta360-link-controller"
+tap "hmenzagh/tap"
+tap "marcus/tap"
+tap "minio/stable"
+tap "sst/tap"
+brew "aria2"
+brew "composer"
+brew "git-filter-repo"
+brew "hugo"
+brew "mole"
+brew "node@22"
+brew "python@3.12"
+brew "youtubedr"
+brew "yq"
+brew "hmenzagh/tap/ccmeter"
+brew "marcus/tap/sidecar"
+brew "minio/stable/mc"
+brew "sst/tap/opencode"
+cask "affinity-designer"
+cask "affinity-photo"
+cask "affinity-publisher"
+cask "audio-hijack"
+cask "balenaetcher"
+cask "beeper"
+cask "chatgpt"
+cask "chatwise"
+cask "crossover"
+cask "epic-games"
+cask "farrago"
+cask "fission"
+cask "handbrake-app"
+cask "kiro"
 cask "local"
 cask "logi-options+"
+cask "loopback"
+cask "macwhisper"
+cask "makemkv"
+cask "mdrp"
 cask "microsoft-auto-update"
 cask "microsoft-teams"
+cask "monologue"
+cask "nova"
+cask "openin"
+cask "plex"
+cask "proton-drive"
+cask "resilio-sync"
+cask "setapp"
 cask "slack"
+cask "steam"
+cask "superwhisper"
+cask "t3-code"
+cask "taphouse"
+cask "textexpander"
+cask "thaw"
+cask "visual-studio-code"
+cask "voiceink"
+cask "zed"
 cask "zoom"
+mas "CARROTweather", id: 993487541
+mas "Compressor", id: 424390742
+mas "DuckDuckGo Privacy for Safari", id: 1482920575
+mas "Final Cut Pro", id: 424389933
+mas "Gifox", id: 1461845568
+mas "Logic Pro", id: 634148309
+mas "Motion", id: 434290957
+mas "Orb", id: 6477840170
+mas "Parcel", id: 639968404
+mas "Parcel 2", id: 375589283
+mas "Perplexity", id: 6714467650
+mas "Photomator", id: 1444636541
+mas "Pixelmator Pro", id: 1289583905
+mas "Prompt", id: 1594420480
+mas "Screens 5", id: 1663047912
+mas "Silveran Reader", id: 0
+mas "Synctrain", id: 0
+mas "TestFlight", id: 899247664
+vscode "ahmadawais.shades-of-purple"
+vscode "anthropic.claude-code"
+vscode "github.copilot-chat"
+vscode "kilocode.kilo-code"
+vscode "mhutchie.git-graph"
+vscode "ms-azuretools.vscode-containers"
+vscode "ms-azuretools.vscode-docker"
+vscode "ms-python.debugpy"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
+vscode "ms-python.vscode-python-envs"
+vscode "ms-vscode-remote.remote-containers"
+vscode "openai.chatgpt"
+vscode "tailscale.vscode-tailscale"
+vscode "tryghost.ghost"
