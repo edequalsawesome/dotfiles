@@ -87,7 +87,7 @@ alias cca8c='env -u MOSHI_TOKEN -u ANTHROPIC_API_KEY CLAUDE_CONFIG_DIR=~/.claude
 # tmux variants (for SSH/remote sessions)
 alias cc-tmux='tmux new-window -n claude-code -c ~/Claude "claude"'
 alias ccyolo-tmux='tmux new-window -n claude-yolo -c ~/Claude "claude --dangerously-skip-permissions"'
-alias cca8c-tmux='tmux new-window -n claude-a8c -c ~/Claude "ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY_A8C claude --dangerously-skip-permissions"'
+alias cca8c-tmux='tmux new-window -n claude-a8c -c ~/Claude "env -u MOSHI_TOKEN -u ANTHROPIC_API_KEY CLAUDE_CONFIG_DIR=~/.claude-a8c claude"'
 
 # cmux variants
 alias ccx='cmux new-split right && cmux send "cd ~/Claude && claude\n"'
