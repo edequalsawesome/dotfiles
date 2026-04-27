@@ -80,9 +80,9 @@ alias cc='claude'
 alias claude-yolo='claude --dangerously-skip-permissions'
 alias ccyolo='claude --dangerously-skip-permissions'
 
-# Work mode (Automattic API key + yolo)
-alias claude-a8c='ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY_A8C claude --dangerously-skip-permissions'
-alias cca8c='ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY_A8C claude --dangerously-skip-permissions'
+# Work mode (separate Claude instance under ~/.claude-a8c, env-scrubbed for boundary safety)
+alias claude-a8c='env -u MOSHI_TOKEN -u ANTHROPIC_API_KEY CLAUDE_CONFIG_DIR=~/.claude-a8c claude'
+alias cca8c='env -u MOSHI_TOKEN -u ANTHROPIC_API_KEY CLAUDE_CONFIG_DIR=~/.claude-a8c claude'
 
 # tmux variants (for SSH/remote sessions)
 alias cc-tmux='tmux new-window -n claude-code -c ~/Claude "claude"'
