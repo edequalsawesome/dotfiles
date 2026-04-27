@@ -20,10 +20,9 @@ fi
 
 host_to_friendly() {
   case "$(echo "$1" | tr '[:upper:]' '[:lower:]')" in
-    jiggymini)     echo "jiggymini" ;;
-    jiggybook-pro) echo "jiggybook" ;;
-    jiggybook-air) echo "jiggyair"  ;;
-    # TODO: add JiggyBook Pro XVI.3 when it arrives (July 2026)
+    jiggymini)       echo "jiggymini" ;;
+    jiggybook-pro*)  echo "jiggybook"  ;;
+    jiggybook-air*)  echo "jiggyair"   ;;
     *)             echo ""          ;;
   esac
 }
