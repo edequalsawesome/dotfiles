@@ -81,9 +81,11 @@ alias cc='claude'
 alias claude-yolo='claude --dangerously-skip-permissions'
 alias ccyolo='claude --dangerously-skip-permissions'
 
-# Work mode (separate Claude instance under ~/.claude-a8c, env-scrubbed for boundary safety)
-alias claude-a8c='env -u MOSHI_TOKEN -u ANTHROPIC_API_KEY CLAUDE_CONFIG_DIR=~/.claude-a8c claude'
-alias cca8c='env -u MOSHI_TOKEN -u ANTHROPIC_API_KEY CLAUDE_CONFIG_DIR=~/.claude-a8c claude'
+# Work mode (separate Claude instance under $HOME/.claude-a8c, env-scrubbed for boundary safety)
+# NOTE: must use $HOME not ~ — `env VAR=~/path cmd` does NOT tilde-expand in zsh/bash;
+# claude would silently fall back to ~/.claude/ and clobber personal auth.
+alias claude-a8c='env -u MOSHI_TOKEN -u ANTHROPIC_API_KEY CLAUDE_CONFIG_DIR=$HOME/.claude-a8c claude'
+alias cca8c='env -u MOSHI_TOKEN -u ANTHROPIC_API_KEY CLAUDE_CONFIG_DIR=$HOME/.claude-a8c claude'
 
 # tmux variants (for SSH/remote sessions)
 alias cc-tmux='tmux new-window -n claude-code -c ~/Claude "claude"'
