@@ -73,8 +73,10 @@ export BUN_INSTALL="$HOME/.bun"
 # === ALIASES ===
 alias brewdump="cd \"$HOME/Library/Mobile Documents/com~apple~CloudDocs/eT3_Dotfiles\""
 alias dotfiles="cd ~/dotfiles"
-alias dotpull='git -C ~/dotfiles pull & git -C ~/Development/jiggyclaude pull & wait'
-alias dotpull-a8c='git -C ~/dotfiles pull & git -C ~/Development/jiggyclaude pull & git -C ~/Development/jiggyclaude-a8c pull & wait'
+alias dotpull='git -C ~/dotfiles pull & git -C ~/Development/jiggyclaude pull & git -C ~/Development/jiggycodex pull & wait'
+alias dotpull-a8c='git -C ~/dotfiles pull & git -C ~/Development/jiggyclaude pull & git -C ~/Development/jiggyclaude-a8c pull & git -C ~/Development/jiggycodex pull & git -C ~/Development/jiggycodex-a8c pull & wait'
+alias dotpush='git -C ~/dotfiles push & git -C ~/Development/jiggyclaude push & git -C ~/Development/jiggycodex push & wait'
+alias dotpush-a8c='git -C ~/dotfiles push & git -C ~/Development/jiggyclaude push & git -C ~/Development/jiggyclaude-a8c push & git -C ~/Development/jiggycodex push & git -C ~/Development/jiggycodex-a8c push & wait'
 alias dev="cd ~/Development"
 alias jiggybrain="cd ~/Obsidian/JiggyBrain"
 alias cc='claude'
@@ -86,6 +88,15 @@ alias ccyolo='claude --dangerously-skip-permissions'
 # claude would silently fall back to ~/.claude/ and clobber personal auth.
 alias claude-a8c='env -u MOSHI_TOKEN -u ANTHROPIC_API_KEY CLAUDE_CONFIG_DIR=$HOME/.claude-a8c claude'
 alias cca8c='env -u MOSHI_TOKEN -u ANTHROPIC_API_KEY CLAUDE_CONFIG_DIR=$HOME/.claude-a8c claude'
+
+# Codex modes: default/Awesome uses ~/.codex; work uses isolated ~/.codex-a8c.
+# Keep $HOME literal here for the same reason as CLAUDE_CONFIG_DIR above.
+alias codex-awesome='codex'
+alias cdx='codex'
+alias codex-work='env CODEX_HOME=$HOME/.codex-a8c codex'
+alias codex-a8c='env CODEX_HOME=$HOME/.codex-a8c codex'
+alias cdwork='env CODEX_HOME=$HOME/.codex-a8c codex'
+alias cda8c='env CODEX_HOME=$HOME/.codex-a8c codex'
 
 # tmux variants (for SSH/remote sessions)
 alias cc-tmux='tmux new-window -n claude-code -c ~/Claude "claude"'
