@@ -3,6 +3,7 @@
 command_timeout = 2000
 
 format = """
+[](fg:red)\
 $os\
 $username\
 $hostname\
