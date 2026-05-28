@@ -29,7 +29,9 @@ $ruby\
 $docker_context\
 $aws\
 $gcloud\
-[](fg:blue bg:mauve)\
+[](fg:blue bg:yellow)\
+$battery\
+[](fg:yellow bg:mauve)\
 $time\
 [](fg:mauve)\
 $jobs\
@@ -172,6 +174,18 @@ format = '[[ $symbol( $profile)( \($region\)) ](fg:mantle bg:blue)]($style)'
 [gcloud]
 style = "bg:blue"
 format = '[[ $symbol( $project) ](fg:mantle bg:blue)]($style)'
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡"
+discharging_symbol = "🔋"
+unknown_symbol = "❓"
+empty_symbol = "🪫"
+format = '[[ $symbol $percentage ](fg:mantle bg:yellow)]($style)'
+
+[[battery.display]]
+threshold = 100
+style = "bg:yellow"
 
 [time]
 disabled = false
