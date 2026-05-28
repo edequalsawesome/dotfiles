@@ -176,11 +176,11 @@ style = "bg:blue"
 format = '[[ $symbol( $project) ](fg:mantle bg:blue)]($style)'
 
 [battery]
-full_symbol = "🔋"
-charging_symbol = "⚡"
-discharging_symbol = "🔋"
-unknown_symbol = "❓"
-empty_symbol = "🪫"
+full_symbol = "󰁹"
+charging_symbol = "󰂄"
+discharging_symbol = "󰁹"
+unknown_symbol = "󰂑"
+empty_symbol = "󰂎"
 format = '[[ $symbol $percentage ](fg:mantle bg:yellow)]($style)'
 
 [[battery.display]]
