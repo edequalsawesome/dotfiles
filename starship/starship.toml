@@ -3,16 +3,15 @@
 command_timeout = 2000
 
 format = """
-[](red)\
 $os\
 $username\
 $hostname\
-[](bg:peach fg:red)\
+[](bg:peach fg:red)\
 $directory\
-[](fg:peach bg:green)\
+[](fg:peach bg:green)\
 $git_branch\
 $git_status\
-[](fg:green bg:teal)\
+[](fg:green bg:teal)\
 $package\
 $c\
 $rust\
@@ -25,13 +24,13 @@ $kotlin\
 $haskell\
 $python\
 $ruby\
-[](fg:teal bg:blue)\
+[](fg:teal bg:blue)\
 $docker_context\
 $aws\
 $gcloud\
-[](fg:blue bg:mauve)\
+[](fg:blue bg:mauve)\
 $time\
-[ ](fg:mauve)\
+[](fg:mauve)\
 $jobs\
 $cmd_duration\
 $line_break$character"""
@@ -43,6 +42,7 @@ palette = 'catppuccin_mocha'
 [os]
 disabled = false
 style = "bg:red fg:crust"
+format = '[ $symbol ]($style)'
 
 [os.symbols]
 Windows = "󰍲"
