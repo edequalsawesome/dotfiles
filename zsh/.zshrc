@@ -73,8 +73,24 @@ export BUN_INSTALL="$HOME/.bun"
 # === ALIASES ===
 alias brewdump="cd \"$HOME/Library/Mobile Documents/com~apple~CloudDocs/eT3_Dotfiles\""
 alias dotfiles="cd ~/dotfiles"
-alias dotpull='git -C ~/dotfiles pull & git -C ~/Development/jiggyclaude pull & git -C ~/Development/jiggycodex pull & wait'
-alias dotpull-a8c='git -C ~/dotfiles pull & git -C ~/Development/jiggyclaude pull & git -C ~/Development/jiggyclaude-a8c pull & git -C ~/Development/jiggycodex pull & git -C ~/Development/jiggycodex-a8c pull & wait'
+# jiggycodex config.toml is the live Codex config and churns constantly, which
+# used to block these pulls. Route it through safe-pull.sh (clears churn only
+# when an incoming config change needs it); fall back to plain pull pre-bootstrap.
+_codexpull() { if [ -x "$1/safe-pull.sh" ]; then "$1/safe-pull.sh"; else git -C "$1" pull; fi; }
+dotpull() {
+  git -C ~/dotfiles pull &
+  git -C ~/Development/jiggyclaude pull &
+  _codexpull ~/Development/jiggycodex &
+  wait
+}
+dotpull-a8c() {
+  git -C ~/dotfiles pull &
+  git -C ~/Development/jiggyclaude pull &
+  git -C ~/Development/jiggyclaude-a8c pull &
+  _codexpull ~/Development/jiggycodex &
+  _codexpull ~/Development/jiggycodex-a8c &
+  wait
+}
 alias dotpush='git -C ~/dotfiles push & git -C ~/Development/jiggyclaude push & git -C ~/Development/jiggycodex push & wait'
 alias dotpush-a8c='git -C ~/dotfiles push & git -C ~/Development/jiggyclaude push & git -C ~/Development/jiggyclaude-a8c push & git -C ~/Development/jiggycodex push & git -C ~/Development/jiggycodex-a8c push & wait'
 alias dev="cd ~/Development"
