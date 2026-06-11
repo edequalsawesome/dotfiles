@@ -29,9 +29,8 @@ $ruby\
 $docker_context\
 $aws\
 $gcloud\
-[](fg:blue bg:yellow)\
 $battery\
-[](fg:yellow bg:mauve)\
+[](fg:blue bg:mauve)\
 $time\
 [](fg:mauve)\
 $jobs\
@@ -178,10 +177,10 @@ format = '[[ $symbol( $project) ](fg:mantle bg:blue)]($style)'
 [battery]
 full_symbol = "󰁹"
 charging_symbol = "󰂄"
-discharging_symbol = "󰁹"
+discharging_symbol = "󰁾"
 unknown_symbol = "󰂑"
 empty_symbol = "󰂎"
-format = '[[ $symbol $percentage ](fg:mantle bg:yellow)]($style)'
+format = '[](fg:blue bg:yellow)[ $symbol $percentage ](fg:mantle bg:yellow)[](fg:yellow bg:blue)'
 
 [[battery.display]]
 threshold = 100

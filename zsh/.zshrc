@@ -109,6 +109,7 @@ alias ccx='cmux new-split right && cmux send "cd ~/Claude && claude\n"'
 # TUI tools
 alias lg='lazygit'
 alias lw='~/Development/linear-worktree/linear-worktree'
+alias gha='HTTPS_PROXY=socks5://127.0.0.1:8080 HTTP_PROXY=socks5://127.0.0.1:8080 GH_HOST=github.a8c.com gh'
 
 # === ADDITIONAL TOOLS ===
 # Bun completions
@@ -273,6 +274,10 @@ fi
 
 # Mole shell completion
 if output="$(mole completion zsh 2>/dev/null)"; then eval "$output"; fi
+
+# RemCTL shell completion
+fpath=(/Users/edequalsawesome/.zsh/completions $fpath)
+autoload -Uz compinit && compinit
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

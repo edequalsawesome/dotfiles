@@ -8,3 +8,4 @@ fi
 
 # Source local secrets (not in dotfiles repo)
 [[ -f ~/.secrets ]] && source ~/.secrets
+. "$HOME/.cargo/env"
