@@ -176,16 +176,73 @@ format = '[[ $symbol( $project) ](fg:mantle bg:blue)]($style)'
 
 [battery]
 full_symbol = "󰁹"
-charging_symbol = "󰂄"
-discharging_symbol = "󰁾"
+charging_symbol = "󰂅"
+discharging_symbol = "󰁹"
 unknown_symbol = "󰂑"
 empty_symbol = "󰂎"
-format = '[](fg:blue bg:yellow)[ $symbol $percentage ](fg:mantle bg:yellow)[](fg:yellow bg:blue)'
+format = '[](fg:blue bg:yellow)[ $symbol $percentage ](fg:mantle bg:yellow)[](fg:yellow bg:blue)'
+
+# Each block overrides the glyph so the icon tracks the real charge level.
+# (Starship uses one static symbol per state otherwise -> the "always 50%" bug.)
+[[battery.display]]
+threshold = 10
+style = "bg:yellow"
+discharging_symbol = "󰁺"
+charging_symbol = "󰢜"
+
+[[battery.display]]
+threshold = 20
+style = "bg:yellow"
+discharging_symbol = "󰁻"
+charging_symbol = "󰂆"
+
+[[battery.display]]
+threshold = 30
+style = "bg:yellow"
+discharging_symbol = "󰁼"
+charging_symbol = "󰂇"
+
+[[battery.display]]
+threshold = 40
+style = "bg:yellow"
+discharging_symbol = "󰁽"
+charging_symbol = "󰂈"
+
+[[battery.display]]
+threshold = 50
+style = "bg:yellow"
+discharging_symbol = "󰁾"
+charging_symbol = "󰢝"
+
+[[battery.display]]
+threshold = 60
+style = "bg:yellow"
+discharging_symbol = "󰁿"
+charging_symbol = "󰂉"
+
+[[battery.display]]
+threshold = 70
+style = "bg:yellow"
+discharging_symbol = "󰂀"
+charging_symbol = "󰢞"
+
+[[battery.display]]
+threshold = 80
+style = "bg:yellow"
+discharging_symbol = "󰂁"
+charging_symbol = "󰂊"
+
+[[battery.display]]
+threshold = 90
+style = "bg:yellow"
+discharging_symbol = "󰂂"
+charging_symbol = "󰂋"
 
 [[battery.display]]
 threshold = 100
 style = "bg:yellow"
-
+discharging_symbol = "󰁹"
+charging_symbol = "󰂅"
 [time]
 disabled = false
 time_format = "%I:%M %p"
