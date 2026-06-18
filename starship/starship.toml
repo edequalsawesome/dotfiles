@@ -25,12 +25,11 @@ $kotlin\
 $haskell\
 $python\
 $ruby\
-[](fg:teal bg:blue)\
+[](fg:teal bg:yellow)\
 $docker_context\
 $aws\
 $gcloud\
 $battery\
-[](fg:blue bg:mauve)\
 $time\
 [](fg:mauve)\
 $jobs\
@@ -180,7 +179,7 @@ charging_symbol = "󰂅"
 discharging_symbol = "󰁹"
 unknown_symbol = "󰂑"
 empty_symbol = "󰂎"
-format = '[](fg:blue bg:yellow)[ $symbol $percentage ](fg:mantle bg:yellow)[](fg:yellow bg:blue)'
+format = '[ $symbol $percentage ](fg:mantle bg:yellow)[](fg:yellow bg:mauve)'
 
 # Each block overrides the glyph so the icon tracks the real charge level.
 # (Starship uses one static symbol per state otherwise -> the "always 50%" bug.)
