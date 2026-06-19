@@ -11,16 +11,11 @@ if [[ "$(ps -o comm= -p $PPID 2>/dev/null)" == *mosh-server ]]; then
   _is_mosh=1
 fi
 
-# Auto-start tmux based on machine role (~/.machine-role)
-# "server" = always start tmux (for machines accessed primarily via remote)
-# anything else / missing = only start tmux on SSH connections
+# Auto-start tmux only on SSH connections.
 # Skips if already in tmux, a mosh session, or a Moshi-managed connection
-if [[ -z "$TMUX" ]] && [[ -z "$_is_mosh" ]] && [[ -z "$_is_moshi" ]]; then
-  _machine_role=$(cat ~/.machine-role 2>/dev/null)
-  if [[ "$_machine_role" == "server" ]] || [[ -n "$SSH_CONNECTION" ]]; then
-    tmux new-session -A -s main
-  fi
-  unset _machine_role
+# (Moshi runs its own picker that attaches tmux after shell startup).
+if [[ -z "$TMUX" ]] && [[ -z "$_is_mosh" ]] && [[ -z "$_is_moshi" ]] && [[ -n "$SSH_CONNECTION" ]]; then
+  tmux new-session -A -s main
 fi
 
 # Show system info with Rocket on shell open
@@ -96,22 +91,16 @@ alias dotpush-a8c='git -C ~/dotfiles push & git -C ~/Development/jiggyclaude pus
 alias dev="cd ~/Development"
 alias jiggybrain="cd ~/Obsidian/JiggyBrain"
 alias cc='claude'
-alias claude-yolo='claude --dangerously-skip-permissions'
 alias ccyolo='claude --dangerously-skip-permissions'
 
 # Work mode (separate Claude instance under $HOME/.claude-a8c, env-scrubbed for boundary safety)
 # NOTE: must use $HOME not ~ — `env VAR=~/path cmd` does NOT tilde-expand in zsh/bash;
 # claude would silently fall back to ~/.claude/ and clobber personal auth.
-alias claude-a8c='env -u MOSHI_TOKEN -u ANTHROPIC_API_KEY CLAUDE_CONFIG_DIR=$HOME/.claude-a8c claude'
 alias cca8c='env -u MOSHI_TOKEN -u ANTHROPIC_API_KEY CLAUDE_CONFIG_DIR=$HOME/.claude-a8c claude'
 
-# Codex modes: default/Awesome uses ~/.codex; work uses isolated ~/.codex-a8c.
+# Codex modes: default uses ~/.codex; work uses isolated ~/.codex-a8c.
 # Keep $HOME literal here for the same reason as CLAUDE_CONFIG_DIR above.
-alias codex-awesome='codex'
 alias cdx='codex'
-alias codex-work='env CODEX_HOME=$HOME/.codex-a8c codex'
-alias codex-a8c='env CODEX_HOME=$HOME/.codex-a8c codex'
-alias cdwork='env CODEX_HOME=$HOME/.codex-a8c codex'
 alias cda8c='env CODEX_HOME=$HOME/.codex-a8c codex'
 
 # tmux variants (for SSH/remote sessions)
@@ -297,6 +286,9 @@ autoload -Uz compinit && compinit
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+# fnm (Fast Node Manager) — manages Node versions; --use-on-cd auto-switches per .node-version/.nvmrc
+eval "$(fnm env --use-on-cd)"
 
 # Initialize Starship prompt (must be at the end)
 eval "$(starship init zsh)"
