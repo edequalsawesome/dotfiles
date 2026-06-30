@@ -1,6 +1,11 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-command_timeout = 2000
+# Generous timeouts so warnings don't fire under heavy load (e.g. a dev
+# server saturating disk/CPU). php starts in ~50ms warm; the 2s default
+# only tripped while the box was hammered. Bump scan_timeout too — the
+# 30ms default loses directory scans in big monorepos under load.
+command_timeout = 5000
+scan_timeout = 100
 
 format = """
 [](fg:red)\
