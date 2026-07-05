@@ -292,7 +292,7 @@ autoload -Uz compinit && compinit
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 # fnm (Fast Node Manager) — manages Node versions; --use-on-cd auto-switches per .node-version/.nvmrc
-eval "$(fnm env --use-on-cd)"
+command -v fnm >/dev/null && eval "$(fnm env --use-on-cd)"
 
 # Initialize Starship prompt (must be at the end)
 eval "$(starship init zsh)"
