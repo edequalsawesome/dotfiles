@@ -26,7 +26,11 @@ fi
 if [[ -n "$TMUX" ]] || [[ -n "$ZELLIJ" ]] || [[ -n "$_is_mosh" ]] || [[ -n "$_is_moshi" ]]; then
   alias fastfetch='fastfetch --config ~/dotfiles/fastfetch/config-tmux.jsonc'
 fi
-fastfetch
+# Skip the banner in awesoMux's floating quick panel (it exports
+# AWESOMUX_FLOATING_PANEL=1 on spawn); every other shell keeps it.
+if [[ -z "$AWESOMUX_FLOATING_PANEL" ]]; then
+  fastfetch
+fi
 unset _is_mosh _is_moshi
 
 # Path to your Oh My Zsh installation.
