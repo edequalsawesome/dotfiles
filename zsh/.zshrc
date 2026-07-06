@@ -1,6 +1,3 @@
-# TEMP-SMOKE (Claude, remove after floating-panel verification)
-echo "$(date +%s) fp=${AWESOMUX_FLOATING_PANEL:-unset} pid=$$" >> /tmp/awesomux-fp-smoke.txt
-
 # Detect Moshi-originated connection (SSH or mosh from the Moshi iOS app).
 # Moshi runs its own session picker and sends an explicit tmux attach after
 # the shell starts, so we must NOT auto-start tmux here (that would race the
