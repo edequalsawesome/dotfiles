@@ -14,9 +14,10 @@ fi
 # Auto-start tmux only on SSH connections.
 # Skips if already in tmux, a mosh session, or a Moshi-managed connection
 # (Moshi runs its own picker that attaches tmux after shell startup).
-if [[ -z "$TMUX" ]] && [[ -z "$_is_mosh" ]] && [[ -z "$_is_moshi" ]] && [[ -n "$SSH_CONNECTION" ]]; then
-  tmux new-session -A -s main
-fi
+# TEMPORARILY DISABLED 2026-07-08 — re-enable by uncommenting below.
+# if [[ -z "$TMUX" ]] && [[ -z "$_is_mosh" ]] && [[ -z "$_is_moshi" ]] && [[ -n "$SSH_CONNECTION" ]]; then
+#   tmux new-session -A -s main
+# fi
 
 # Show system info with Rocket on shell open
 # - tmux, zellij, mosh, or Moshi: text logo (no graphics protocol passthrough)
