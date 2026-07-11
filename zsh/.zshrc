@@ -27,9 +27,11 @@ fi
 if [[ -n "$TMUX" ]] || [[ -n "$ZELLIJ" ]] || [[ -n "$_is_mosh" ]] || [[ -n "$_is_moshi" ]]; then
   alias fastfetch='fastfetch --config ~/dotfiles/fastfetch/config-tmux.jsonc'
 fi
-# Skip the banner in awesoMux's floating quick panel (it exports
-# AWESOMUX_FLOATING_PANEL=1 on spawn); every other shell keeps it.
-if [[ -z "$AWESOMUX_FLOATING_PANEL" ]]; then
+# Skip the banner in awesoMux's compact surfaces — the floating quick panel
+# (AWESOMUX_FLOATING_PANEL=1) and the pop-up Terminal Companion, which sets
+# only the broader AWESOMUX_COMPACT_TERMINAL=1 marker. Keep both checks until
+# the installed app exports the compact marker for the floating panel too.
+if [[ -z "$AWESOMUX_FLOATING_PANEL" && -z "$AWESOMUX_COMPACT_TERMINAL" ]]; then
   fastfetch
 fi
 unset _is_mosh _is_moshi
