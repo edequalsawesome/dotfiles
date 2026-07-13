@@ -64,6 +64,10 @@ brew bundle dump --force --file="$TMP_FULL" \
 # line above every entry by default now (the old `--describe` behaviour), and
 # those comment lines match nothing in the base, so they'd all land in the
 # overlay as noise.
+#
+# `mas ..., id: 0` lines are dropped outright: mas couldn't resolve an App
+# Store ID (TestFlight / sideloaded builds), and `brew bundle install` errors
+# out trying to install app ID 0. Those apps have to be installed by hand.
 strip_comments() {
   sed -E \
     -e 's/[[:space:]]*#.*$//' \
