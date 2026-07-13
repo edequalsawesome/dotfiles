@@ -135,6 +135,7 @@ mas "Amphetamine", id: 937984704
 mas "CARROTweather", id: 993487541
 mas "ColorSlurp", id: 1287239339
 mas "Compressor", id: 424390742
+mas "Drafts", id: 1435957248
 mas "DuckDuckGo Privacy for Safari", id: 1482920575
 mas "Endel", id: 1346247457
 mas "Fantastical", id: 975937182
