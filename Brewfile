@@ -2,7 +2,6 @@
 # Restore: brew bundle --file=~/dotfiles/Brewfile
 # Sign into the App Store first, or every `mas` line fails.
 
-tap "charmbracelet/tap"
 tap "hmenzagh/tap"
 tap "nikitabobko/tap"
 tap "opencoworkai/tap"
