@@ -17,10 +17,11 @@ DOTFILES_DIR="$HOME/dotfiles"
 # Map LocalHostName -> friendly Brewfile suffix. Keep in sync with bin/brewfile-sync.
 host_to_friendly() {
     case "$(echo "$1" | tr '[:upper:]' '[:lower:]')" in
-        jiggymini)     echo "jiggymini" ;;
-        jiggybook-pro) echo "jiggybook" ;;
-        jiggybook-air) echo "jiggyair"  ;;
-        *)             echo ""          ;;
+        jiggymini)      echo "jiggymini" ;;
+        jiggybook-dev*) echo "jiggydev"  ;;
+        jiggybook-pro*) echo "jiggybook" ;;
+        jiggybook-air*) echo "jiggyair"  ;;
+        *)              echo ""          ;;
     esac
 }
 
