@@ -49,7 +49,8 @@ fi
 OVERLAY_FILE="$DOTFILES_DIR/Brewfile.$FRIENDLY"
 TMP_FULL="$(mktemp "${TMPDIR:-/tmp}/brewfile-sync.XXXXXXXXXX")"
 BASE_STRIPPED="$(mktemp "${TMPDIR:-/tmp}/brewfile-sync-base.XXXXXXXXXX")"
-trap 'rm -f "$TMP_FULL" "$BASE_STRIPPED"' EXIT INT TERM HUP
+DUMP_STRIPPED="$(mktemp "${TMPDIR:-/tmp}/brewfile-sync-dump.XXXXXXXXXX")"
+trap 'rm -f "$TMP_FULL" "$BASE_STRIPPED" "$DUMP_STRIPPED"' EXIT INT TERM HUP
 
 # --vscode alone is exclusive, so list every category we care about.
 brew bundle dump --force --file="$TMP_FULL" \
