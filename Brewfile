@@ -114,6 +114,7 @@ cask "proton-mail"
 cask "dropbox"
 cask "resilio-sync"
 cask "rustdesk"
+cask "superduper" # keep: cloning tool for the machine migration
 
 # ─── Comms & work ────────────────────────────────────────────────
 cask "slack"
