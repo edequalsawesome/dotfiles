@@ -138,6 +138,7 @@ cask "font-noto-sans"
 mas "1Password for Safari", id: 1569813296
 mas "Actions For Obsidian", id: 1659667937
 mas "Amphetamine", id: 937984704
+mas "CARROTweather", id: 993487541
 mas "ColorSlurp", id: 1287239339
 mas "Compressor", id: 424390742
 mas "ControllerForHomeKit", id: 1198176727
