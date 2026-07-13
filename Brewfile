@@ -97,10 +97,7 @@ cask "soundsource"
 cask "farrago"
 cask "fission"
 
-# ─── Design & media ──────────────────────────────────────────────
-cask "affinity-designer"
-cask "affinity-photo"
-cask "affinity-publisher"
+# ─── Media ───────────────────────────────────────────────────────
 cask "vlc"
 cask "imageoptim"
 
