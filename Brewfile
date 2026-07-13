@@ -157,6 +157,7 @@ mas "Obsidian Web Clipper", id: 6720708363
 mas "Pages", id: 409201541
 mas "Parcel 2", id: 375589283
 mas "Photomator", id: 1444636541
+mas "PiPifier", id: 1160374471
 mas "Pixelmator Pro", id: 1289583905
 mas "Screens 5", id: 1663047912
 mas "StopTheMadness Pro", id: 6471380298
