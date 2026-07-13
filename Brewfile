@@ -1,114 +1,192 @@
-tap "charmbracelet/tap"
-tap "nikitabobko/tap"
+# Brewfile — fresh Mac setup
+# Restore: brew bundle --file=~/dotfiles/Brewfile
+# Sign into the App Store first, or every `mas` line fails.
 
+tap "charmbracelet/tap"
+tap "hmenzagh/tap"
+tap "nikitabobko/tap"
+tap "opencoworkai/tap"
+
+# ─── CLI ─────────────────────────────────────────────────────────
+brew "aria2"
 brew "chafa" # renders Rocket ASCII art via fastfetch
+brew "composer"
+brew "corepack", link: false
 brew "fastfetch"
 brew "ffmpeg"
-brew "fonttools"
+brew "fonttools", link: false
+brew "fswatch"
 brew "fzf"
 brew "gh"
+brew "git-filter-repo"
 brew "glances"
 brew "glow"
+brew "hugo"
+brew "hyperfine"
 brew "jq"
 brew "lazygit"
 brew "mas"
+brew "mole"
 brew "mosh"
 brew "node"
+brew "node@22"
+brew "opencode"
 brew "pandoc"
 brew "php"
+brew "python@3.12"
 brew "starship"
-brew "tailscale", restart_service: :changed
-brew "terminal-notifier"
 brew "tmux"
 brew "uv"
 brew "wp-cli"
+brew "xcodegen"
 brew "yara"
+brew "yq"
 brew "yt-dlp"
 brew "zellij"
+brew "zig@0.15", link: true
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
-brew "charmbracelet/tap/crush"
+brew "hmenzagh/tap/ccmeter", trusted: true
 
-cask "1password"
-cask "1password-cli"
-cask "alfred"
-cask "arq"
-cask "choosy"
-cask "claude"
+# ─── Terminals & editors ─────────────────────────────────────────
+cask "ghostty"
 cask "cmux"
-cask "codex"
-cask "cursor"
-cask "dot"
-cask "dropbox"
-cask "espanso"
+cask "sublime-text"
+cask "sublime-merge"
+cask "t3-code"
+
+# ─── Browsers (all kept — work testing) ──────────────────────────
 cask "firefox"
 cask "firefox@developer-edition"
+cask "helium-browser"
+cask "zen"
+cask "choosy" # routes links to the right browser
+
+# ─── AI ──────────────────────────────────────────────────────────
+cask "claude"
+cask "chatgpt"
+cask "chatwise"
+cask "openusage"
+cask "monologue" # dictation
+cask "opencoworkai/tap/open-codesign"
+
+# ─── Dev / WordPress ─────────────────────────────────────────────
+cask "wordpresscom-studio"
+cask "local"
+cask "orbstack"
+
+# ─── Window management & system ──────────────────────────────────
+cask "nikitabobko/tap/aerospace", trusted: true
+cask "alfred"
+cask "raycast"
+cask "hyperkey"
+cask "keyboardcleantool"
+cask "thaw"
+cask "muzzle"
+cask "espanso"
+cask "hazel"
+cask "symboliclinker"
+cask "logi-options+"
+cask "setapp"
+cask "taphouse"
+
+# ─── Audio (Rogue Amoeba) ────────────────────────────────────────
+cask "audio-hijack"
+cask "loopback"
+cask "soundsource"
+cask "farrago"
+cask "fission"
+
+# ─── Media ───────────────────────────────────────────────────────
+cask "vlc"
+cask "imageoptim"
+
+# ─── Security & sync ─────────────────────────────────────────────
+cask "1password"
+cask "1password-cli"
+cask "secretive"
+cask "protonvpn"
+cask "proton-drive"
+cask "proton-mail"
+cask "dropbox"
+cask "resilio-sync"
+cask "rustdesk"
+
+# ─── Comms & work ────────────────────────────────────────────────
+cask "slack"
+cask "zoom"
+cask "microsoft-teams"
+cask "microsoft-auto-update"
+cask "telegram"
+cask "beeper"
+cask "dot"
+cask "todoist-app"
+cask "obsidian"
+cask "netnewswire"
+cask "shottr"
+
+# ─── Fonts ───────────────────────────────────────────────────────
+cask "font-bagel-fat-one"
 cask "font-domine"
 cask "font-hack-nerd-font"
 cask "font-inconsolata-for-powerline"
+cask "font-monaspace"
 cask "font-noto-sans"
-cask "font-playfair-display"
-cask "ghostty"
-cask "hazel"
-cask "helium-browser"
-cask "hyperkey"
-cask "imageoptim"
-cask "keyboardcleantool"
-cask "muzzle"
-cask "netnewswire"
-cask "nikitabobko/tap/aerospace"
-cask "obsidian"
-cask "orbstack"
-cask "proton-mail"
-cask "protonvpn"
-cask "raycast"
-cask "rustdesk"
-cask "secretive"
-cask "shottr"
-cask "soundsource"
-cask "sublime-merge"
-cask "sublime-text"
-cask "superduper"
-cask "symboliclinker"
-cask "telegram"
-cask "todoist-app"
-cask "vlc"
-cask "wispr-flow"
-cask "wordpresscom-studio"
-cask "zen"
 
+# ─── Mac App Store ───────────────────────────────────────────────
 mas "1Password for Safari", id: 1569813296
 mas "Actions For Obsidian", id: 1659667937
 mas "Amphetamine", id: 937984704
 mas "ColorSlurp", id: 1287239339
+mas "Compressor", id: 424390742
 mas "ControllerForHomeKit", id: 1198176727
 mas "Drafts", id: 1435957248
+mas "DuckDuckGo Privacy for Safari", id: 1482920575
 mas "Endel", id: 1346247457
-mas "Fin", id: 726213320
-mas "GarageBand", id: 682658836
+mas "Fantastical", id: 975937182
+mas "Final Cut Pro", id: 424389933
+mas "Gifox", id: 1461845568
 mas "HomeCam", id: 1292995895
 mas "HomePass", id: 1330266650
-mas "iMovie", id: 408981434
-mas "Infuse", id: 1136220934
 mas "Ivory", id: 6444602274
 mas "Keynote", id: 409183694
-mas "Mapper", id: 1589391989
+mas "Logic Pro", id: 634148309
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
-mas "MusicMatch", id: 1596146219
+mas "Motion", id: 434290957
 mas "Numbers", id: 409203825
 mas "Obsidian Web Clipper", id: 6720708363
 mas "Pages", id: 409201541
-mas "Parachute", id: 6748614170
+mas "Parcel", id: 639968404
+mas "Photomator", id: 1444636541
 mas "PiPifier", id: 1160374471
-mas "Reeder", id: 1529448980
-mas "ShellFish", id: 1336634154
+mas "Pixelmator Pro", id: 1289583905
+mas "Prompt", id: 1594420480
+mas "Screens 5", id: 1663047912
 mas "StopTheMadness Pro", id: 6471380298
 mas "Tampermonkey", id: 6738342400
-mas "Tampermonkey Classic", id: 1482490089
+mas "TestFlight", id: 899247664
 mas "TextSniper", id: 1528890965
 mas "uBlock Origin Lite", id: 6745342698
 mas "Vinegar", id: 1591303229
 mas "Xcode", id: 497799835
 mas "xSearch", id: 1579902068
+
+# ─── Language runtimes ───────────────────────────────────────────
+go "github.com/bootdotdev/bootdev"
+uv "claude-code-transcripts"
+npm "@doist/todoist-cli"
+npm "@mariozechner/pi-coding-agent"
+npm "@openai/codex"
+npm "defuddle"
+npm "mcp-server-apple-events"
+npm "obsidian-headless"
+npm "pi-claude-bridge"
+npm "pi-cmux"
+npm "vercel"
+npm "wp-studio"
+
+# Not in Homebrew — install by hand on a new machine:
+#   Tailscale (App Store or tailscale.com), Backblaze, Setapp apps
+#   (Transmit, TrashMe, Gas Mask, Clay, Forecast, Deckset, Flotato…)
