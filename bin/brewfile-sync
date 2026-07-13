@@ -73,7 +73,6 @@ strip_comments() {
 }
 
 strip_comments "$BASE_BREWFILE" > "$BASE_STRIPPED"
-DUMP_STRIPPED="$(mktemp "${TMPDIR:-/tmp}/brewfile-sync-dump.XXXXXXXXXX")"
 strip_comments "$TMP_FULL" > "$DUMP_STRIPPED"
 
 # Overlay = dump lines not present in the stripped base.
