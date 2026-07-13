@@ -4,7 +4,6 @@
 
 tap "hmenzagh/tap"
 tap "nikitabobko/tap"
-tap "opencoworkai/tap"
 
 # ─── CLI ─────────────────────────────────────────────────────────
 brew "aria2"
@@ -66,10 +65,8 @@ cask "choosy" # routes links to the right browser
 # ─── AI ──────────────────────────────────────────────────────────
 cask "claude"
 cask "chatgpt"
-cask "chatwise"
 cask "openusage"
 cask "monologue" # dictation
-cask "opencoworkai/tap/open-codesign", trusted: true
 
 # ─── Dev / WordPress ─────────────────────────────────────────────
 cask "wordpresscom-studio"
@@ -89,7 +86,6 @@ cask "hazel"
 cask "symboliclinker"
 cask "logi-options+"
 cask "insta360-link-controller"
-cask "taphouse"
 
 # ─── Audio (Rogue Amoeba) ────────────────────────────────────────
 cask "audio-hijack"
@@ -108,7 +104,6 @@ cask "1password-cli"
 cask "secretive"
 cask "protonvpn"
 cask "proton-drive"
-cask "proton-mail"
 cask "dropbox"
 cask "resilio-sync"
 cask "rustdesk"
@@ -120,8 +115,6 @@ cask "zoom"
 cask "microsoft-teams"
 cask "microsoft-auto-update"
 cask "telegram"
-cask "beeper"
-cask "dot"
 cask "todoist-app"
 cask "obsidian"
 cask "netnewswire"
@@ -142,17 +135,13 @@ mas "Amphetamine", id: 937984704
 mas "CARROTweather", id: 993487541
 mas "ColorSlurp", id: 1287239339
 mas "Compressor", id: 424390742
-mas "ControllerForHomeKit", id: 1198176727
-mas "Drafts", id: 1435957248
 mas "DuckDuckGo Privacy for Safari", id: 1482920575
 mas "Endel", id: 1346247457
 mas "Fantastical", id: 975937182
 mas "Final Cut Pro", id: 424389933
 mas "Gifox", id: 1461845568
 mas "HomeCam", id: 1292995895
-mas "HomePass", id: 1330266650
 mas "Infuse", id: 1136220934
-mas "Ivory", id: 6444602274
 mas "Keynote", id: 409183694
 mas "Logic Pro", id: 634148309
 mas "Mapper", id: 1589391989
@@ -166,9 +155,7 @@ mas "Obsidian Web Clipper", id: 6720708363
 mas "Pages", id: 409201541
 mas "Parcel 2", id: 375589283
 mas "Photomator", id: 1444636541
-mas "PiPifier", id: 1160374471
 mas "Pixelmator Pro", id: 1289583905
-mas "Prompt", id: 1594420480
 mas "Screens 5", id: 1663047912
 mas "StopTheMadness Pro", id: 6471380298
 mas "Tampermonkey", id: 6738342400
@@ -177,7 +164,6 @@ mas "TextSniper", id: 1528890965
 mas "uBlock Origin Lite", id: 6745342698
 mas "Vinegar", id: 1591303229
 mas "Xcode", id: 497799835
-mas "xSearch", id: 1579902068
 
 # ─── Language runtimes ───────────────────────────────────────────
 go "github.com/bootdotdev/bootdev"
