@@ -20,6 +20,7 @@ brew "gh"
 brew "git-filter-repo"
 brew "glances"
 brew "glow"
+brew "go" # required by the `go "…/bootdev"` line below; cleanup autoremoves it otherwise
 brew "hugo"
 brew "hyperfine"
 brew "jq"
