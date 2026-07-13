@@ -193,5 +193,6 @@ npm "vercel"
 npm "wp-studio"
 
 # Not in Homebrew — install by hand on a new machine:
-#   Tailscale (App Store or tailscale.com), Backblaze, Setapp apps
-#   (Transmit, TrashMe, Gas Mask, Clay, Forecast, Deckset, Flotato…)
+#   Tailscale (App Store or tailscale.com), Backblaze
+#   Mirage, Synctrain — mas can't resolve an App Store ID for these (id: 0),
+#   so brewfile-sync drops them and `brew bundle` can't install them.
