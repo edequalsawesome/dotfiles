@@ -87,6 +87,7 @@ cask "espanso"
 cask "hazel"
 cask "symboliclinker"
 cask "logi-options+"
+cask "insta360-link-controller"
 cask "setapp"
 cask "taphouse"
 
