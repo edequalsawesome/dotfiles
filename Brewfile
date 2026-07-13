@@ -3,6 +3,7 @@
 # Sign into the App Store first, or every `mas` line fails.
 
 tap "hmenzagh/tap"
+tap "interactive-buffoonery/tap"
 tap "nikitabobko/tap"
 
 # ─── CLI ─────────────────────────────────────────────────────────
