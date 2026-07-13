@@ -68,7 +68,7 @@ cask "chatgpt"
 cask "chatwise"
 cask "openusage"
 cask "monologue" # dictation
-cask "opencoworkai/tap/open-codesign"
+cask "opencoworkai/tap/open-codesign", trusted: true
 
 # ─── Dev / WordPress ─────────────────────────────────────────────
 cask "wordpresscom-studio"
