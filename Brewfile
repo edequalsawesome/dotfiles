@@ -142,6 +142,7 @@ mas "Fantastical", id: 975937182
 mas "Final Cut Pro", id: 424389933
 mas "Gifox", id: 1461845568
 mas "HomeCam", id: 1292995895
+mas "HomePass", id: 1330266650
 mas "Infuse", id: 1136220934
 mas "Keynote", id: 409183694
 mas "Logic Pro", id: 634148309
