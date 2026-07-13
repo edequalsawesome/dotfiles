@@ -55,20 +55,31 @@ trap 'rm -f "$TMP_FULL" "$BASE_STRIPPED"' EXIT INT TERM HUP
 brew bundle dump --force --file="$TMP_FULL" \
   --taps --formula --cask --mas --vscode
 
-# Strip comments and blank lines from the base before matching, so a
+# Strip comments and blank lines from BOTH sides before matching, so a
 # commented line like `cask "setapp" # notes` still filters out the
 # uncommented `cask "setapp"` line from the dump.
-sed -E \
-  -e 's/[[:space:]]*#.*$//' \
-  -e 's/[[:space:]]+$//' \
-  -e '/^[[:space:]]*$/d' \
-  "$BASE_BREWFILE" > "$BASE_STRIPPED"
+#
+# The dump must be stripped too: `brew bundle dump` emits a `# description`
+# line above every entry by default now (the old `--describe` behaviour), and
+# those comment lines match nothing in the base, so they'd all land in the
+# overlay as noise.
+strip_comments() {
+  sed -E \
+    -e 's/[[:space:]]*#.*$//' \
+    -e 's/[[:space:]]+$//' \
+    -e '/^[[:space:]]*$/d' \
+    "$1"
+}
+
+strip_comments "$BASE_BREWFILE" > "$BASE_STRIPPED"
+DUMP_STRIPPED="$(mktemp "${TMPDIR:-/tmp}/brewfile-sync-dump.XXXXXXXXXX")"
+strip_comments "$TMP_FULL" > "$DUMP_STRIPPED"
 
 # Overlay = dump lines not present in the stripped base.
 # grep -Fxv preserves the dump's original order (taps → formulas → casks → mas → vscode).
 # grep exit 1 = no matches survived (overlay empty, expected). Anything else is a real error.
 set +e
-grep -Fxv -f "$BASE_STRIPPED" "$TMP_FULL" > "$OVERLAY_FILE"
+grep -Fxv -f "$BASE_STRIPPED" "$DUMP_STRIPPED" > "$OVERLAY_FILE"
 grep_status=$?
 set -e
 if [[ $grep_status -ne 0 && $grep_status -ne 1 ]]; then
