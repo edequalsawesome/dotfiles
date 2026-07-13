@@ -50,6 +50,7 @@ brew "zsh-syntax-highlighting"
 brew "hmenzagh/tap/ccmeter", trusted: true
 
 # ─── Terminals & editors ─────────────────────────────────────────
+cask "interactive-buffoonery/tap/awesomux" # our own! 🎉
 cask "ghostty"
 cask "cmux"
 cask "sublime-text"
