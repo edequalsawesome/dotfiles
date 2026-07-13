@@ -34,6 +34,7 @@ brew "opencode"
 brew "pandoc"
 brew "php"
 brew "python@3.12"
+brew "ripgrep" # only here as someone's dependency otherwise; autoremove would eat it
 brew "starship"
 brew "tmux"
 brew "uv"
