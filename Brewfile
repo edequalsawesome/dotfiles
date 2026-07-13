@@ -150,17 +150,20 @@ mas "Final Cut Pro", id: 424389933
 mas "Gifox", id: 1461845568
 mas "HomeCam", id: 1292995895
 mas "HomePass", id: 1330266650
+mas "Infuse", id: 1136220934
 mas "Ivory", id: 6444602274
 mas "Keynote", id: 409183694
 mas "Logic Pro", id: 634148309
+mas "Mapper", id: 1589391989
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
 mas "Motion", id: 434290957
+mas "MusicMatch", id: 1596146219
 mas "Numbers", id: 409203825
 mas "Obsidian Web Clipper", id: 6720708363
 mas "Pages", id: 409201541
-mas "Parcel", id: 639968404
+mas "Parcel 2", id: 375589283
 mas "Photomator", id: 1444636541
 mas "PiPifier", id: 1160374471
 mas "Pixelmator Pro", id: 1289583905
