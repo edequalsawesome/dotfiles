@@ -103,6 +103,7 @@ cask "imageoptim"
 # ─── Security & sync ─────────────────────────────────────────────
 cask "1password"
 cask "1password-cli"
+cask "arq"
 cask "secretive"
 cask "protonvpn"
 cask "proton-drive"
