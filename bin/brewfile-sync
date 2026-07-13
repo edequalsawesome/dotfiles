@@ -69,6 +69,7 @@ strip_comments() {
     -e 's/[[:space:]]*#.*$//' \
     -e 's/[[:space:]]+$//' \
     -e '/^[[:space:]]*$/d' \
+    -e '/^mas .*, id: 0$/d' \
     "$1"
 }
 
