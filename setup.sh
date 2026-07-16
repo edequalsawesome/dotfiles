@@ -106,7 +106,7 @@ if [ ! -f "$HOME/.machine-role" ]; then
     echo "  1) desktop  - tmux only on SSH connections (default)"
     echo "  2) server   - always start tmux (for machines accessed remotely)"
     printf "Choice [1]: "
-    read -r role_choice
+    read -r role_choice < /dev/tty || role_choice=1
     case "$role_choice" in
         2|server) echo "server" > "$HOME/.machine-role" && echo "Machine role set to: server" ;;
         *)        echo "desktop" > "$HOME/.machine-role" && echo "Machine role set to: desktop" ;;
