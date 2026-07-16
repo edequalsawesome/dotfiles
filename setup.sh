@@ -162,6 +162,13 @@ else
     echo "starship already installed."
 fi
 
+# Newer Homebrew refuses casks/formulae from untrusted third-party taps and
+# aborts the whole `brew bundle` run. Trust every tap our Brewfiles use first.
+# `brew trust` doesn't exist on older Homebrew — the `|| true` covers that.
+grep -h '^tap ' "$DOTFILES_DIR"/Brewfile* 2>/dev/null | cut -d'"' -f2 | sort -u | while read -r t; do
+    brew trust --tap "$t" 2>/dev/null || true
+done
+
 # Install Homebrew packages: always install base, then optional host overlay.
 if [ -f "$DOTFILES_DIR/Brewfile" ]; then
     echo "Installing base Homebrew packages..."
