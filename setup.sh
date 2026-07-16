@@ -41,7 +41,9 @@ echo "Setting up dotfiles from $DOTFILES_DIR..."
 # Install Homebrew if not present
 if ! command -v brew &> /dev/null; then
     echo "Homebrew not found. Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    # </dev/tty so this works under `curl | bash`: stdin there is the pipe,
+    # which makes Homebrew go non-interactive and fail its sudo check.
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" < /dev/tty
 
     # Add Homebrew to PATH for Apple Silicon Macs
     if [[ $(uname -m) == "arm64" ]]; then
