@@ -84,6 +84,8 @@ mkdir -p ~/.config/cmux
 ln -sf "$DOTFILES_DIR/cmux/settings.json" ~/.config/cmux/settings.json
 mkdir -p ~/.config/awesomux
 ln -sf "$DOTFILES_DIR/awesomux/config.toml" ~/.config/awesomux/config.toml
+ln -sf "$DOTFILES_DIR/git/.gitconfig" ~/.gitconfig
+ln -sf "$DOTFILES_DIR/git/.gitconfig-a8c" ~/.gitconfig-a8c
 mkdir -p "$HOME/Library/Application Support/Sublime Text/Packages/User"
 ln -sf "$DOTFILES_DIR/sublime/Preferences.sublime-settings" "$HOME/Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings"
 ln -sf "$DOTFILES_DIR/sublime/Package Control.sublime-settings" "$HOME/Library/Application Support/Sublime Text/Packages/User/Package Control.sublime-settings"
