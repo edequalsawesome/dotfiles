@@ -82,6 +82,8 @@ for layout in "$DOTFILES_DIR/zellij/layouts/"*.kdl; do
 done
 mkdir -p ~/.config/cmux
 ln -sf "$DOTFILES_DIR/cmux/settings.json" ~/.config/cmux/settings.json
+mkdir -p ~/.config/awesomux
+ln -sf "$DOTFILES_DIR/awesomux/config.toml" ~/.config/awesomux/config.toml
 mkdir -p ~/.claude
 
 # Claude Code runtime config (CLAUDE.md, skills, hooks, settings)
