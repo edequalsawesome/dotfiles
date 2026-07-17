@@ -96,7 +96,9 @@ dotpull-a8c() {
 alias dotpush='git -C ~/dotfiles push & git -C ~/Development/jiggyclaude push & git -C ~/Development/jiggycodex push & wait'
 alias dotpush-a8c='git -C ~/dotfiles push & git -C ~/Development/jiggyclaude push & git -C ~/Development/jiggyclaude-a8c push & git -C ~/Development/jiggycodex push & git -C ~/Development/jiggycodex-a8c push & wait'
 alias dev="cd ~/Development"
+alias deva8c="cd ~/Development@a8c"
 alias jiggybrain="cd ~/Obsidian/JiggyBrain"
+alias jiggya8c="cd ~/Obsidian/JiggyA8C"
 alias cc='claude'
 alias ccyolo='claude --dangerously-skip-permissions'
 

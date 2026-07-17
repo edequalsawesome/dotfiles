@@ -31,6 +31,7 @@ cursor_glow = true
 font_size = 16.0
 glow_strength = 0.65
 mono_font = "Hack Nerd Font Mono"
+sidebar_position = "left"
 terminal_background_color = "#313244"
 terminal_background_mode = "ghostty"
 theme = "dark"
