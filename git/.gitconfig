@@ -1,0 +1,9 @@
+[user]
+	name = eD! Thomas
+	email = ed@et3.me
+
+[url "git@github.a8c.com:"]
+	insteadOf = https://github.a8c.com/
+
+[includeIf "gitdir:~/Development@a8c/"]
+	path = ~/.gitconfig-a8c
