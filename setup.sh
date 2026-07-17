@@ -84,6 +84,9 @@ mkdir -p ~/.config/cmux
 ln -sf "$DOTFILES_DIR/cmux/settings.json" ~/.config/cmux/settings.json
 mkdir -p ~/.config/awesomux
 ln -sf "$DOTFILES_DIR/awesomux/config.toml" ~/.config/awesomux/config.toml
+mkdir -p "$HOME/Library/Application Support/Sublime Text/Packages/User"
+ln -sf "$DOTFILES_DIR/sublime/Preferences.sublime-settings" "$HOME/Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings"
+ln -sf "$DOTFILES_DIR/sublime/Package Control.sublime-settings" "$HOME/Library/Application Support/Sublime Text/Packages/User/Package Control.sublime-settings"
 mkdir -p ~/.claude
 
 # Claude Code runtime config (CLAUDE.md, skills, hooks, settings)
