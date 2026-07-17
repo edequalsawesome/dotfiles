@@ -1,0 +1,73 @@
+
+[advanced]
+config_schema_version = 2
+
+[agent_integrations]
+
+[agent_integrations.claude_code]
+enabled = true
+
+[agent_integrations.codex]
+enabled = true
+
+[agent_integrations.grok]
+enabled = false
+
+[agent_integrations.open_code]
+enabled = false
+
+[agent_integrations.pi]
+enabled = false
+
+[agents]
+permission_posture = "ask_every_time"
+remember_tool_trust = true
+
+[appearance]
+accent = "mauve"
+always_show_jump_numbers = false
+crt_scanlines = true
+cursor_glow = true
+font_size = 16.0
+glow_strength = 0.65
+mono_font = "Hack Nerd Font Mono"
+terminal_background_color = "#313244"
+terminal_background_mode = "ghostty"
+theme = "dark"
+ui_font = "system"
+ui_text_scale = 1.0
+
+[general]
+restore_workspaces = true
+show_menu_bar_mini_status = false
+sidebar_compact_mode = true
+
+[keyboard]
+
+[keyboard.shortcuts]
+
+[notifications]
+dock_bounce_on_needs_attention = false
+muted = false
+notify_on_needs_attention = true
+notify_on_turn_done = false
+respect_do_not_disturb = true
+show_workspace_details = true
+sound = true
+turn_done_alerts_when_focused = false
+
+[terminal]
+clipboard_write_policy = "allow"
+command_bridge_enabled = true
+confirm_clipboard_read = true
+copy_on_select = "inherit"
+daemon_idle_cap_enabled = true
+daemon_idle_cap_minutes = 1440
+
+[workspaces]
+confirm_close_with_running_agent = true
+confirm_destructive_pane_action_with_running_agent = true
+default_group = "Nonsense"
+default_ide_priority = ["com.sublimetext.4", "com.microsoft.VSCode", "com.todesktop.230313mzl4w4u92", "com.apple.dt.Xcode"]
+open_in_ide_enabled = true
+output_marks_needs_attention = true
