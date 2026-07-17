@@ -1,0 +1,19 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"A File Icon",
+		"ayu",
+		"BracketHighlighter",
+		"Catppuccin color schemes",
+		"Color Scheme - Dracula Neue",
+		"Dracula Color Scheme",
+		"Material Theme",
+		"Package Control",
+		"Predawn",
+		"SideBarEnhancements",
+	],
+}
