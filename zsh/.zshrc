@@ -79,20 +79,25 @@ alias dotfiles="cd ~/dotfiles"
 # used to block these pulls. Route it through safe-pull.sh (clears churn only
 # when an incoming config change needs it); fall back to plain pull pre-bootstrap.
 _codexpull() { if [ -x "$1/safe-pull.sh" ]; then "$1/safe-pull.sh"; else git -C "$1" pull; fi; }
-dotpull() {
-  git -C ~/dotfiles pull &
-  git -C ~/Development/jiggyclaude pull &
-  _codexpull ~/Development/jiggycodex &
-  wait
+# Pull repos in parallel and report which ones failed. Without the per-PID exit
+# check, a repo wedged mid-merge/mid-rebase fails silently in the background
+# noise and dotpull looks like it did nothing.
+_dotpull() {
+  local -a pids labels; local repo i fail=0
+  for repo in "$@"; do
+    case "$repo" in
+      *jiggycodex*) _codexpull "$repo" & ;;
+      *)            git -C "$repo" pull & ;;
+    esac
+    pids+=($!); labels+=("$repo")
+  done
+  for i in {1..$#pids}; do
+    wait $pids[$i] || { print -u2 "dotpull FAILED: $labels[$i]"; fail=1 }
+  done
+  return $fail
 }
-dotpull-a8c() {
-  git -C ~/dotfiles pull &
-  git -C ~/Development/jiggyclaude pull &
-  git -C ~/Development/jiggyclaude-a8c pull &
-  _codexpull ~/Development/jiggycodex &
-  _codexpull ~/Development/jiggycodex-a8c &
-  wait
-}
+dotpull()     { _dotpull ~/dotfiles ~/Development/jiggyclaude ~/Development/jiggycodex; }
+dotpull-a8c() { _dotpull ~/dotfiles ~/Development/jiggyclaude ~/Development/jiggyclaude-a8c ~/Development/jiggycodex ~/Development/jiggycodex-a8c; }
 alias dotpush='git -C ~/dotfiles push & git -C ~/Development/jiggyclaude push & git -C ~/Development/jiggycodex push & wait'
 alias dotpush-a8c='git -C ~/dotfiles push & git -C ~/Development/jiggyclaude push & git -C ~/Development/jiggyclaude-a8c push & git -C ~/Development/jiggycodex push & git -C ~/Development/jiggycodex-a8c push & wait'
 alias dev="cd ~/Development"
