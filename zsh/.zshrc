@@ -87,7 +87,9 @@ _dotpull() {
   for repo in "$@"; do
     case "$repo" in
       *jiggycodex*) _codexpull "$repo" & ;;
-      *)            git -C "$repo" pull & ;;
+      # --autostash: local churn (live-edited configs) otherwise blocks the
+      # fast-forward even when the edits don't overlap the incoming ones.
+      *)            git -C "$repo" pull --rebase --autostash & ;;
     esac
     pids+=($!); labels+=("$repo")
   done
@@ -306,3 +308,6 @@ command -v fnm >/dev/null && eval "$(fnm env --use-on-cd)"
 
 # Initialize Starship prompt (must be at the end)
 eval "$(starship init zsh)"
+
+# super-sandbox: added by scripts/setup.sh
+export PATH="/Users/edequalsawesome/Development@a8c/super-sandbox/bin:$PATH"
