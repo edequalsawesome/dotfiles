@@ -72,6 +72,12 @@ path+=(
 # Bun
 export BUN_INSTALL="$HOME/.bun"
 
+# issue-to-pr worktree spinup: build artifacts too slow/impossible to rebuild in
+# a fresh worktree, symlinked from the main checkout instead. Paths are relative
+# to whichever repo is being spun up and are skipped when absent, so this is a
+# no-op everywhere except awesoMux.
+export ISSUE_TO_PR_SHARED_ARTIFACTS=".build/ghostty .build/amx"
+
 # === ALIASES ===
 alias brewdump="cd \"$HOME/Library/Mobile Documents/com~apple~CloudDocs/eT3_Dotfiles\""
 alias dotfiles="cd ~/dotfiles"
