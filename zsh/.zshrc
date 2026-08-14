@@ -120,6 +120,12 @@ alias ccyolo='claude --dangerously-skip-permissions'
 # claude would silently fall back to ~/.claude/ and clobber personal auth.
 alias cca8c='env -u MOSHI_TOKEN -u ANTHROPIC_API_KEY CLAUDE_CONFIG_DIR=$HOME/.claude-a8c claude'
 
+# Synthetic mode (3rd Claude instance under $HOME/.claude-syn, routed to synthetic.new).
+# ANTHROPIC_API_KEY is scrubbed so the real Anthropic key never goes to a 3rd-party endpoint.
+# Base URL + model mapping live in ~/.claude-syn/settings.json; only the token comes from here.
+# $HOME literal, not ~ — see CLAUDE_CONFIG_DIR note above.
+alias ccs='env -u ANTHROPIC_API_KEY CLAUDE_CONFIG_DIR=$HOME/.claude-syn ANTHROPIC_AUTH_TOKEN=$SYNTHETIC_API_KEY claude'
+
 # Codex modes: default uses ~/.codex; work uses isolated ~/.codex-a8c.
 # Keep $HOME literal here for the same reason as CLAUDE_CONFIG_DIR above.
 alias cdx='codex'
@@ -317,3 +323,8 @@ eval "$(starship init zsh)"
 
 # super-sandbox: added by scripts/setup.sh
 export PATH="/Users/edequalsawesome/Development@a8c/super-sandbox/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/edequalsawesome/.lmstudio/bin"
+# End of LM Studio CLI section
+
