@@ -10,8 +10,8 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DOTFILES_DIR="$(dirname "$SCRIPT_DIR")"
-BASE_BREWFILE="$DOTFILES_DIR/Brewfile"
+MACOS_DIR="$(dirname "$SCRIPT_DIR")"
+BASE_BREWFILE="$MACOS_DIR/Brewfile"
 
 if [[ ! -f "$BASE_BREWFILE" ]]; then
   echo "brewfile-sync: base Brewfile not found at $BASE_BREWFILE" >&2
@@ -47,7 +47,7 @@ if [[ ! "$FRIENDLY" =~ ^[A-Za-z0-9._-]+$ ]]; then
   exit 1
 fi
 
-OVERLAY_FILE="$DOTFILES_DIR/Brewfile.$FRIENDLY"
+OVERLAY_FILE="$MACOS_DIR/Brewfile.$FRIENDLY"
 TMP_FULL="$(mktemp "${TMPDIR:-/tmp}/brewfile-sync.XXXXXXXXXX")"
 BASE_STRIPPED="$(mktemp "${TMPDIR:-/tmp}/brewfile-sync-base.XXXXXXXXXX")"
 DUMP_STRIPPED="$(mktemp "${TMPDIR:-/tmp}/brewfile-sync-dump.XXXXXXXXXX")"

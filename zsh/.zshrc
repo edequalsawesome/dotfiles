@@ -148,14 +148,20 @@ alias gha='HTTPS_PROXY=socks5://127.0.0.1:8080 HTTP_PROXY=socks5://127.0.0.1:808
 # Bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
-# Cache brew prefix (avoid repeated shell-outs)
-_brew_prefix=$(brew --prefix)
-
-# Zsh autosuggestions
-source $_brew_prefix/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
+# Zsh autosuggestions + syntax highlighting. Path differs by install method
+# (Homebrew on macOS, pacman on Arch) and either may not be installed yet —
+# no-op silently rather than erroring on every shell startup.
+if command -v brew &> /dev/null; then
+  _zsh_plugin_dir="$(brew --prefix)/share"
+else
+  _zsh_plugin_dir="/usr/share/zsh/plugins"
+fi
+[[ -f "$_zsh_plugin_dir/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && \
+  source "$_zsh_plugin_dir/zsh-autosuggestions/zsh-autosuggestions.zsh"
 # Zsh syntax highlighting (must be near end of .zshrc)
-source $_brew_prefix/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -f "$_zsh_plugin_dir/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && \
+  source "$_zsh_plugin_dir/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+unset _zsh_plugin_dir
 
 # iTerm2 shell integration (only inside iTerm2)
 if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
@@ -165,8 +171,8 @@ fi
 # Kiro code nonsense
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 
-# Use Secretive for SSH
-export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
+# Use Secretive for SSH (macOS only — leaves the system default ssh-agent alone elsewhere)
+[[ "$OSTYPE" == darwin* ]] && export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
 
 # tabtab source for packages
 # uninstall by removing these lines
@@ -318,8 +324,8 @@ autoload -Uz compinit && compinit
 # fnm (Fast Node Manager) — manages Node versions; --use-on-cd auto-switches per .node-version/.nvmrc
 command -v fnm >/dev/null && eval "$(fnm env --use-on-cd)"
 
-# Initialize Starship prompt (must be at the end)
-eval "$(starship init zsh)"
+# Initialize Starship prompt (must be at the end) — no-op if not installed yet
+command -v starship &> /dev/null && eval "$(starship init zsh)"
 
 # super-sandbox: added by scripts/setup.sh
 export PATH="/Users/edequalsawesome/Development@a8c/super-sandbox/bin:$PATH"
