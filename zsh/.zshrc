@@ -81,13 +81,13 @@ export ISSUE_TO_PR_SHARED_ARTIFACTS=".build/ghostty .build/amx"
 # === ALIASES ===
 alias brewdump="cd \"$HOME/Library/Mobile Documents/com~apple~CloudDocs/eT3_Dotfiles\""
 alias dotfiles="cd ~/dotfiles"
-# Pull the config repos. Implementation lives in the repo (dotpull.sh) so the
-# SessionStart hooks can call it too — a bash hook can't call a zsh function,
-# and the hooks are what make a machine sync itself without you remembering.
-dotpull()     { ~/Development/jiggyclaude/dotpull.sh ~/dotfiles ~/Development/jiggyclaude ~/Development/jiggycodex ~/Development/jiggyskills; }
-dotpull-a8c() { ~/Development/jiggyclaude/dotpull.sh ~/dotfiles ~/Development/jiggyclaude ~/Development/jiggyclaude-a8c ~/Development/jiggycodex ~/Development/jiggycodex-a8c ~/Development/jiggyskills; }
-alias dotpush='git -C ~/dotfiles push & git -C ~/Development/jiggyclaude push & git -C ~/Development/jiggycodex push & git -C ~/Development/jiggyskills push & wait'
-alias dotpush-a8c='git -C ~/dotfiles push & git -C ~/Development/jiggyclaude push & git -C ~/Development/jiggyclaude-a8c push & git -C ~/Development/jiggycodex push & git -C ~/Development/jiggycodex-a8c push & git -C ~/Development/jiggyskills push & wait'
+# Pull/push the five config repos through the shared guarded helper.
+# Skill updates and publication use their separate reviewed workflow.
+unalias dotpush dotpush-a8c 2>/dev/null || true
+dotpull()     { python3 "$HOME/Development/jiggyclaude/hooks/config_sync.py" pull; }
+dotpull-a8c() { dotpull; }
+dotpush()     { python3 "$HOME/Development/jiggyclaude/hooks/config_sync.py" push; }
+dotpush-a8c() { dotpush; }
 alias dev="cd ~/Development"
 alias deva8c="cd ~/Development@a8c"
 alias jiggybrain="cd ~/Obsidian/JiggyBrain"
@@ -307,4 +307,3 @@ export PATH="/Users/edequalsawesome/Development@a8c/super-sandbox/bin:$PATH"
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/edequalsawesome/.lmstudio/bin"
 # End of LM Studio CLI section
-
