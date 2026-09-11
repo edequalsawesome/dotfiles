@@ -31,17 +31,19 @@ cursor_glow = true
 font_size = 16.0
 glow_strength = 0.65
 mono_font = "Hack Nerd Font Mono"
+promote_workspaces_needing_input = true
 sidebar_position = "left"
-terminal_background_color = "#313244"
-terminal_background_mode = "ghostty"
+terminal_background_color = "#11111b"
+terminal_background_mode = "catppuccin_theme"
 theme = "dark"
-ui_font = "system"
+tinted_high_contrast = false
+ui_font = "Geist"
 ui_text_scale = 1.0
 
 [general]
 restore_workspaces = true
 show_menu_bar_mini_status = false
-sidebar_compact_mode = true
+sidebar_compact_mode = false
 
 [keyboard]
 
@@ -70,5 +72,7 @@ confirm_close_with_running_agent = true
 confirm_destructive_pane_action_with_running_agent = true
 default_group = "Nonsense"
 default_ide_priority = ["com.sublimetext.4", "com.microsoft.VSCode", "com.todesktop.230313mzl4w4u92", "com.apple.dt.Xcode"]
+managed_ssh_offer_ignored_destinations = []
+managed_ssh_offers_enabled = true
 open_in_ide_enabled = true
 output_marks_needs_attention = true
