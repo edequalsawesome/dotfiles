@@ -262,7 +262,7 @@ format = '[$symbol$number ]($style)'
 show_milliseconds = true
 format = " took $duration "
 min_time = 2_000
-show_notifications = true
+show_notifications = false
 min_time_to_notify = 45_000
 
 [status]
