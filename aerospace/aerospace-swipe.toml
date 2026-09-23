@@ -1,0 +1,6 @@
+# On each Mac, set Trackpad > More Gestures > Mission Control to four fingers.
+# Slower, deliberate workspace stepping on the trackpad.
+threshold = 0.10
+step_size = 0.20
+cooldown = 0.25
+flick_max = 0

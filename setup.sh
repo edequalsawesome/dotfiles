@@ -75,6 +75,7 @@ ln -sf "$DOTFILES_DIR/fastfetch/config.jsonc" ~/.config/fastfetch/config.jsonc
 mkdir -p ~/.config
 ln -sf "$DOTFILES_DIR/starship/starship.toml" ~/.config/starship.toml
 ln -sf "$DOTFILES_DIR/aerospace/.aerospace.toml" ~/.aerospace.toml
+ln -sf "$DOTFILES_DIR/aerospace/aerospace-swipe.toml" ~/.config/aerospace-swipe.toml
 mkdir -p ~/.config/zellij/layouts
 ln -sf "$DOTFILES_DIR/zellij/config.kdl" ~/.config/zellij/config.kdl
 for layout in "$DOTFILES_DIR/zellij/layouts/"*.kdl; do
@@ -180,6 +181,9 @@ done
 if [ -f "$DOTFILES_DIR/Brewfile" ]; then
     echo "Installing base Homebrew packages..."
     brew bundle install --file="$DOTFILES_DIR/Brewfile"
+    if brew list --formula mossein/tap/aerospace-swipe >/dev/null 2>&1; then
+        brew services start mossein/tap/aerospace-swipe
+    fi
 else
     echo "Base Brewfile not found at $DOTFILES_DIR/Brewfile - skipping base"
 fi

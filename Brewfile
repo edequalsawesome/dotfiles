@@ -5,6 +5,7 @@
 tap "hmenzagh/tap"
 tap "interactive-buffoonery/tap"
 tap "nikitabobko/tap"
+tap "mossein/tap"
 
 # ─── CLI ─────────────────────────────────────────────────────────
 brew "aria2"
@@ -76,6 +77,7 @@ cask "local"
 cask "orbstack"
 
 # ─── Window management & system ──────────────────────────────────
+brew "mossein/tap/aerospace-swipe", trusted: true
 cask "nikitabobko/tap/aerospace", trusted: true
 cask "alfred"
 cask "raycast"
