@@ -17,6 +17,9 @@ accordion-padding = 30
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
 
+# Show the swipe HUD for keyboard and gesture workspace changes
+exec-on-workspace-change = ['/bin/sh', '-c', 'echo $AEROSPACE_FOCUSED_WORKSPACE > /tmp/aerospace-ws-change']
+
 # Mouse follows focus when switching monitors
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
