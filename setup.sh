@@ -182,6 +182,8 @@ if [ -f "$DOTFILES_DIR/Brewfile" ]; then
     echo "Installing base Homebrew packages..."
     brew bundle install --file="$DOTFILES_DIR/Brewfile"
     if brew list --formula mossein/tap/aerospace-swipe >/dev/null 2>&1; then
+        SWIPE_SCRIPT="$(brew --prefix mossein/tap/aerospace-swipe)/libexec/swipe.sh"
+        cp "$DOTFILES_DIR/aerospace/swipe.sh" "$SWIPE_SCRIPT"
         brew services start mossein/tap/aerospace-swipe
     fi
 else
