@@ -16,13 +16,16 @@ export PATH="$tmp:$PATH" CALLS="$tmp/calls"
 
 MONITORS='Built-in Retina Display
 Studio Display'; export MONITORS
-sh "$(dirname "$0")/swipe.sh" up
+! sh "$(dirname "$0")/swipe.sh" up
 [ ! -e "$CALLS" ]
+! sh "$(dirname "$0")/swipe.sh" hud
 
 MONITORS='Studio Display'; export MONITORS
-sh "$(dirname "$0")/swipe.sh" up
+! sh "$(dirname "$0")/swipe.sh" up
 [ ! -e "$CALLS" ]
+! sh "$(dirname "$0")/swipe.sh" hud
 
 MONITORS='Built-in Retina Display'; export MONITORS
 sh "$(dirname "$0")/swipe.sh" up
 [ "$(cat "$CALLS")" = fullscreen ]
+sh "$(dirname "$0")/swipe.sh" hud

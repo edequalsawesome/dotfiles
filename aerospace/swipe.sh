@@ -5,12 +5,13 @@ A=$(command -v aerospace || true)
 [ -x "$A" ] || A=/usr/local/bin/aerospace
 
 # Only handle gestures when the built-in display is the sole active monitor.
-monitors=$($A list-monitors --format '%{monitor-name}') || exit 0
-printf '%s\n' "$monitors" | grep -Eq '^Built-in' || exit 0
-printf '%s\n' "$monitors" | grep -Eqv '^Built-in' && exit 0
+monitors=$($A list-monitors --format '%{monitor-name}') || exit 1
+printf '%s\n' "$monitors" | grep -Eq '^Built-in' || exit 1
+printf '%s\n' "$monitors" | grep -Eqv '^Built-in' && exit 1
 
 dir="$1"
 case "$dir" in
+  hud)  exit 0 ;;
   up)   exec $A fullscreen ;;
   down) exec $A layout tiles accordion ;;
 esac
