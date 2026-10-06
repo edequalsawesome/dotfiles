@@ -31,6 +31,13 @@ cd ~/dotfiles
 ./setup.sh
 ```
 
+## WeeCast
+
+`weecast/settings.json` is the stable WeeCast settings mirror. Setup links it to
+`~/.config/com.edequalsawesome.weecast/settings.json`; Dev keeps its own settings.
+Enable **Settings → Backup → Settings File** in WeeCast and choose **Import**.
+The empty seed preserves current preferences; the next in-app settings change fills it.
+
 ## Notes
 
 * The Brewfile lives in iCloud, not here (I'm overthinking it, but whatever, that's how I live my life)

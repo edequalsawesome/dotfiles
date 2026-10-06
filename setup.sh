@@ -85,6 +85,8 @@ mkdir -p ~/.config/cmux
 ln -sf "$DOTFILES_DIR/cmux/settings.json" ~/.config/cmux/settings.json
 mkdir -p ~/.config/awesomux
 ln -sf "$DOTFILES_DIR/awesomux/config.toml" ~/.config/awesomux/config.toml
+mkdir -p ~/.config/com.edequalsawesome.weecast
+ln -sf "$DOTFILES_DIR/weecast/settings.json" ~/.config/com.edequalsawesome.weecast/settings.json
 ln -sf "$DOTFILES_DIR/git/.gitconfig" ~/.gitconfig
 ln -sf "$DOTFILES_DIR/git/.gitconfig-a8c" ~/.gitconfig-a8c
 mkdir -p "$HOME/Library/Application Support/Sublime Text/Packages/User"
