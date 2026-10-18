@@ -108,8 +108,9 @@ alias ccs='env -u ANTHROPIC_API_KEY CLAUDE_CONFIG_DIR=$HOME/.claude-syn ANTHROPI
 
 # Codex modes: default uses ~/.codex; work uses isolated ~/.codex-a8c.
 # Keep $HOME literal here for the same reason as CLAUDE_CONFIG_DIR above.
-alias cdx='codex'
-alias cda8c='env CODEX_HOME=$HOME/.codex-a8c codex'
+# Per-terminal servers keep agent status hooks routed to the launching pane.
+alias cdx='codex --no-daemon'
+alias cda8c='env CODEX_HOME=$HOME/.codex-a8c codex --no-daemon'
 
 # tmux variants (for SSH/remote sessions)
 alias cc-tmux='tmux new-window -n claude-code -c ~/Claude "claude"'
