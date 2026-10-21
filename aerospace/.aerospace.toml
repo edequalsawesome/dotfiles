@@ -15,7 +15,7 @@ accordion-padding = 30
 
 # Default layout
 default-root-container-layout = 'tiles'
-default-root-container-orientation = 'auto'
+default-root-container-orientation = "auto"
 
 # Show the swipe HUD for keyboard and gesture workspace changes
 exec-on-workspace-change = ['/bin/sh', '-c', '"$HOME/dotfiles/aerospace/swipe.sh" hud && echo "$AEROSPACE_FOCUSED_WORKSPACE" > /tmp/aerospace-ws-change']
@@ -24,10 +24,11 @@ exec-on-workspace-change = ['/bin/sh', '-c', '"$HOME/dotfiles/aerospace/swipe.sh
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 # Keep just the workspaces you'll actually use
-persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "T", "O", "W", "M"]
+persistent-workspaces = ["1", "2", "3", "4", "B", "T", "O", "W", "M", "Z"]
 
-# Workspace-to-monitor assignments (gracefully falls back when unplugged)
+# Workspace-to-monitor assignments (gracefully falls back ∆∆∆when unplugged)
 [workspace-to-monitor-force-assignment]
+Z = "Built-in Retina Display"
 T = 'Studio Display'          # Terminal (Ghostty)
 O = 'Studio Display'          # Obsidian
 W = 'Built-in Retina Display' # Work (Slack, Todoist, Calendar)
@@ -130,8 +131,8 @@ if.app-id = 'com.electron.studio'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-id = 'com.quillmeetings.Quill-desktop'
-run = 'move-node-to-workspace 8'
+if.app-id = "com.quillmeetings.Quill-desktop"
+run = ["move-node-to-workspace Z", "layout floating"]
 
 # === MAIN KEYBINDINGS ===
 [mode.main.binding]
@@ -166,11 +167,6 @@ run = 'move-node-to-workspace 8'
     alt-3 = 'workspace 3'
     alt-4 = 'workspace 4'
     alt-5 = 'workspace 5'
-    alt-6 = 'workspace 6'
-    alt-7 = 'workspace 7'
-    alt-8 = 'workspace 8'
-    alt-9 = 'workspace 9'
-    alt-0 = 'workspace 0'
 
     # Move windows to workspaces
     alt-shift-1 = 'move-node-to-workspace 1'
@@ -178,11 +174,6 @@ run = 'move-node-to-workspace 8'
     alt-shift-3 = 'move-node-to-workspace 3'
     alt-shift-4 = 'move-node-to-workspace 4'
     alt-shift-5 = 'move-node-to-workspace 5'
-    alt-shift-6 = 'move-node-to-workspace 6'
-    alt-shift-7 = 'move-node-to-workspace 7'
-    alt-shift-8 = 'move-node-to-workspace 8'
-    alt-shift-9 = 'move-node-to-workspace 9'
-    alt-shift-0 = 'move-node-to-workspace 0'
 
     # Named workspaces
     alt-b = 'workspace B'
@@ -190,6 +181,7 @@ run = 'move-node-to-workspace 8'
     alt-o = 'workspace O'
     alt-w = 'workspace W'
     alt-m = 'workspace M'
+    alt-z = 'workspace Z'
 
     # Move windows to named workspaces
     alt-shift-b = 'move-node-to-workspace B'
@@ -197,6 +189,7 @@ run = 'move-node-to-workspace 8'
     alt-shift-o = 'move-node-to-workspace O'
     alt-shift-w = 'move-node-to-workspace W'
     alt-shift-m = 'move-node-to-workspace M'
+    alt-shift-z = 'move-node-to-workspace Z'
 
     # Quick switch to last workspace (alt+tab conflicts with macOS app switcher)
     alt-semicolon = 'workspace-back-and-forth'
